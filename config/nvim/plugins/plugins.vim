@@ -1,6 +1,6 @@
 " TODO auto-install vim-plug
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.config/nvim/.plugged')
 
 " --- Looks
 " Better status bar

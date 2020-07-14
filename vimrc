@@ -81,7 +81,7 @@ au BufNewFile,BufRead,BufEnter *.ll,*.yy set softtabstop=2
 
 
 "---PLUGINS---
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/.plugged')
 
 " Looks
 Plug 'morhetz/gruvbox'
