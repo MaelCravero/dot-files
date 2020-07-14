@@ -1,0 +1,143 @@
+/**
+ * rofi -dump-theme output.
+ * Rofi version: 1.5.4
+ **/
+* {
+    alternate-urgent-background: var(urgent-background);
+    selected-urgent-foreground:  var(urgent-foreground);
+    alternate-active-foreground: var(active-foreground);
+    selected-active-background:  var(gruvbox-dark-yellow-light);
+    highlight:                   bold italic ;
+    normal-foreground:           var(foreground);
+    background:                  var(gruvbox-dark-bg0);
+    scrollbar-handle:            var(border-color);
+    alternate-normal-foreground: var(foreground);
+    gruvbox-dark-red-light:      rgba ( 251, 73, 52, 100 % );
+    urgent-foreground:           var(background);
+    gruvbox-dark-fg0:            rgba ( 251, 241, 199, 100 % );
+    gruvbox-dark-bg3:            rgba ( 102, 92, 84, 100 % );
+    alternate-urgent-foreground: var(urgent-foreground);
+    selected-active-foreground:  var(active-foreground);
+    gruvbox-dark-red-dark:       rgba ( 204, 36, 29, 100 % );
+    separatorcolor:              var(border-color);
+    selected-normal-background:  var(gruvbox-dark-bg3);
+    selected-urgent-background:  var(gruvbox-dark-red-light);
+    gruvbox-dark-fg1:            rgba ( 235, 219, 178, 100 % );
+    scrollbar:                   true;
+    alternate-active-background: var(active-background);
+    active-background:           var(gruvbox-dark-yellow-dark);
+    gruvbox-dark-yellow-dark:    rgba ( 215, 153, 33, 100 % );
+    gruvbox-dark-bg0-soft:       rgba ( 50, 48, 47, 100 % );
+    gruvbox-dark-yellow-light:   rgba ( 250, 189, 47, 100 % );
+    background-color:            var(background);
+    normal-background:           var(background);
+    border-color:                var(gruvbox-dark-gray);
+    foreground:                  var(gruvbox-dark-fg1);
+    gruvbox-dark-gray:           rgba ( 168, 153, 132, 100 % );
+    alternate-normal-background: var(gruvbox-dark-bg0-soft);
+    urgent-background:           var(gruvbox-dark-red-dark);
+    gruvbox-dark-bg0:            rgba ( 40, 40, 40, 100 % );
+    active-foreground:           var(background);
+    selected-normal-foreground:  var(gruvbox-dark-fg0);
+}
+window {
+    width:      25.0000em ;
+    // border:     0px 2px 0px 0px ;
+    location:   southeast;
+    anchor:     southeast;
+    text-color: var(foreground);
+    height:     60.0000% ;
+}
+mode-switcher {
+    padding:          4px ;
+    text-color: var(foreground);
+    background-color: var(background);
+    border:           2px 0px 0px ;
+}
+button selected {
+    border-color: var(selected-normal-background);
+    text-color:   var(selected-normal-background);
+}
+/**
+inputbar {
+    padding:          4px ;
+    text-color:       var(normal-foreground);
+    border:           0px 0px 2px ;
+}
+**/
+mainbox {
+    highlight:  var(highlight);
+    text-color: var(foreground);
+    background-color: var(background);
+    expand:           true;
+    spacing:          1.0000em ;
+}
+listview {
+    padding: 0.0000em 0.4000em 0.0000em 1.0000em ;
+    dynamic: false;
+    lines:   0;
+}
+element normal.normal {
+    background-color: var(normal-background);
+    text-color:       var(normal-foreground);
+}
+element normal.urgent {
+    background-color: var(urgent-background);
+    text-color:       var(urgent-foreground);
+}
+element normal.active {
+    background-color: var(active-background);
+    text-color:       var(active-foreground);
+}
+element selected.normal {
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
+}
+element selected.urgent {
+    background-color: var(selected-urgent-background);
+    text-color:       var(selected-urgent-foreground);
+}
+element selected.active {
+    background-color: var(selected-active-background);
+    text-color:       var(selected-active-foreground);
+}
+element alternate.normal {
+    background-color: var(alternate-normal-background);
+    text-color:       var(alternate-normal-foreground);
+}
+element alternate.urgent {
+    background-color: var(alternate-urgent-background);
+    text-color:       var(alternate-urgent-foreground);
+}
+element alternate.active {
+    background-color: var(alternate-active-background);
+    text-color:       var(alternate-active-foreground);
+}
+inputbar {
+    padding:    2px ;
+    spacing:    0;
+    text-color: var(normal-foreground);
+    children:   [ prompt,textbox-prompt-sep,entry,case-indicator ];
+}
+case-indicator {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+entry {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+prompt {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+button {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+textbox-prompt-sep {
+    margin:     0px 0.3000em 0px 0px ;
+    expand:     false;
+    str:        ":";
+    text-color: var(normal-foreground);
+}

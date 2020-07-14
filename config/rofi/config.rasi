@@ -1,0 +1,7 @@
+configuration {
+    modi: "window,combi,drun";
+    theme: "gruvbox-popup";
+    font: "DejaVuSansMono Nerd Font 10";
+    combi-modi: "window,drun,run";
+    show-icons: true;
+}
