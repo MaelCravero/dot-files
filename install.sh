@@ -2,7 +2,7 @@
 
 mkdir -p ~/.config
 
-dots="vimrc i3blocks.conf i3status.conf clang-format"
+dots="zshrc vimrc i3blocks.conf i3status.conf clang-format"
 configs="nvim rofi i3"
 
 # Home dot files
@@ -22,3 +22,5 @@ done
 echo -n "vim-plug... " && curl -fLso ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
     echo "OK" || echo "KO"
+
+echo -n "oh my zsh... " && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && echo "OK"
