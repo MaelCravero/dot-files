@@ -1,0 +1,15 @@
+{
+    "metals.javaHome": "/usr/lib/jvm/java-11-openjdk",
+
+    "languageserver": {
+        "Ada": {
+            "command": "/home/mael/misc/lsp/ada-lsp/ada_language_server",
+            "filetypes": ["ada"]
+        },
+        "ocaml": {
+            "command": "opam",
+            "args": ["config", "exec", "--", "ocaml-language-server", "--stdio"],
+            "filetypes": ["ocaml", "reason"]
+        }
+    }
+}
