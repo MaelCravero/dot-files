@@ -2,14 +2,23 @@
 
 mkdir -p ~/.config
 
-ln -sT $PWD/i3 ~/.i3 && echo "i3 ok"
+dots="vimrc i3blocks.conf i3status.conf clang-format"
+configs="nvim rofi i3"
 
-ln -s $PWD/vimrc ~/.vimrc && echo "vimrc ok"
-ln -sT $PWD/config/nvim ~/.config/nvim && echo "config/nvim ok"
-ln -sT $PWD/config/rofi ~/.config/rofi && echo "config/rofi ok"
+# Home dot files
+for elt in $dots; do
+    echo -n "$elt... " && ln -s $PWD/$elt ~/.$elt && echo "OK";
+done
 
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+# Config folders
+for elt in $configs; do
+    echo -n "$elt... " && ln -sT $PWD/$elt ~/.config/$elt && echo "OK";
+done
+
+# i3 install
+# echo -n "i3... " && ln -sT $PWD/i3 ~/.i3 && echo "OK";
+
+# vim-plug
+echo -n "vim-plug... " && curl -fLso ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
-    echo "vim-plug ok"
-
-ln -s $PWD/clang-format ~/.clang-format && echo "clang-format ok"
+    echo "OK" || echo "KO"
