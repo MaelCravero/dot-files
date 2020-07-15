@@ -4,6 +4,9 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
+exec --no-startup-id setxkbmap -option caps:escape
+exec --no-startup-id redshift-gtk -g 0.9:0.9:0.7 &
+
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
@@ -37,9 +40,6 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id dmenu_recency
 bindsym $mod+d exec rofi -show combi
 
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
-
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
@@ -57,22 +57,12 @@ bindsym $mod+Ctrl+semicolon exec terminal -e 'alsamixer'
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F2 exec palemoon
-bindsym $mod+F3 exec pcmanfm
-# bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec gksu pcmanfm
-bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-
-# focus_follows_mouse no
 
 # change focus
 bindsym $mod+j focus left
@@ -143,14 +133,12 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 﩮 1
-set $ws2 舘 2
-set $ws3  3
-set $ws4  4
-set $ws5  5
-set $ws6  6
-set $ws7  7
-set $ws8  8
+set $ws1 1:﩮 1
+set $ws2 2:舘 2
+set $ws3 3: 3
+set $ws4 4: 4
+set $ws5 5: 5
+set $ws6 6: 6
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -159,8 +147,6 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -169,8 +155,6 @@ bindsym $mod+Ctrl+3 move container to workspace $ws3
 bindsym $mod+Ctrl+4 move container to workspace $ws4
 bindsym $mod+Ctrl+5 move container to workspace $ws5
 bindsym $mod+Ctrl+6 move container to workspace $ws6
-bindsym $mod+Ctrl+7 move container to workspace $ws7
-bindsym $mod+Ctrl+8 move container to workspace $ws8
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -179,14 +163,12 @@ bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws1
-# assign [class="Pale moon"] $ws2
-# assign [class="Pcmanfm"] $ws3
-# assign [class="Skype"] $ws5
+assign [class="Thunderbird"] $ws1
+assign [class="Discord"] $ws1
+assign [class="Slack"] $ws1
+assign [class="Brave"] $ws2
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -215,9 +197,6 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -275,7 +254,6 @@ bindsym $mod+Tab exec --no-startup-id blurlock
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-#exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -327,6 +305,8 @@ set $gruvbox_dgrey #928374
 set $gruvbox_yellow #d79921
 set $gruvbox_red #fb4934
 
+set $gruvbox_accent #d79921
+
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
@@ -348,10 +328,10 @@ bar {
         separator $gruvbox_fg
 
 #                      border  backgr. text
-        focused_workspace  $gruvbox_yellow $gruvbox_yellow $gruvbox_bg
-        active_workspace   $gruvbox_yellow $gruvbox_bg $gruvbox_yellow
-        inactive_workspace $gruvbox_bg $gruvbox_bg $gruvbox_yellow
-        binding_mode       $gruvbox_yellow $gruvbox_bg $gruvbox_yellow
+        focused_workspace  $gruvbox_accent $gruvbox_accent $gruvbox_bg
+        active_workspace   $gruvbox_accent $gruvbox_bg $gruvbox_accent
+        inactive_workspace $gruvbox_bg $gruvbox_bg $gruvbox_accent
+        binding_mode       $gruvbox_accent $gruvbox_bg $gruvbox_accent
         urgent_workspace   $gruvbox_bg $gruvbox_bg $gruvbox_red
     }
 }
@@ -361,10 +341,10 @@ bindsym $mod+semicolon bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          $gruvbox_yellow $gruvbox_yellow $gruvbox_bg $gruvbox_bg
-  client.focused_inactive $gruvbox_bg $gruvbox_bg $gruvbox_yellow $gruvbox_bg
+  client.focused          $gruvbox_accent $gruvbox_accent $gruvbox_bg $gruvbox_bg
+  client.focused_inactive $gruvbox_bg $gruvbox_bg $gruvbox_accent $gruvbox_bg
   client.unfocused        $gruvbox_bg $gruvbox_bg $gruvbox_fg $gruvbox_bg
-  client.urgent           $gruvbox_red $gruvbox_bg $gruvbox_yellow $gruvbox_bg
+  client.urgent           $gruvbox_red $gruvbox_bg $gruvbox_accent $gruvbox_bg
   client.placeholder      #000000 #0c0c0c #ffffff #000000
 
   client.background       $gruvbox_bg
