@@ -36,3 +36,8 @@ source $HOME/.config/nvim/plugins/obsession.vim
 source $HOME/.config/nvim/plugins/rnvimr.vim
 
 "______________________________________________________________________________
+
+highlight link CocErrorSign GruvboxRed
+highlight link CocWarningSign GruvboxOrange
+highlight link CocInfoSign GruvboxAqua
+highlight link CocHintSign GruvboxBlue
