@@ -2,16 +2,12 @@
 
 function! s:goyo_enter()
     set cursorline!
-    set noshowmode
-    set noshowcmd
     set scrolloff=999
     " ...
 endfunction
 
 function! s:goyo_leave()
     set cursorline
-    set showmode
-    set showcmd
     set scrolloff=5
     " ...
 endfunction

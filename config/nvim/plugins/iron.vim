@@ -1,6 +1,5 @@
 " Iron
 
-map cr ctr
 luafile $HOME/.config/nvim/iron.lua
 "
 "lua << EOF

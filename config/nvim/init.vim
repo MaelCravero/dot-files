@@ -1,16 +1,18 @@
 " Load basic vim config
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-source ~/.vimrc
+source $HOME/.vimrc
 
 " Appearance
 set termguicolors
 set guifont=DejaVuSansMono:h9
 set background=dark
 set cursorline
+set noshowcmd
+set noshowmode
 
 tnoremap <C-W><C-W> <C-\><C-n><C-W><C-W>
-tnoremap <Esc><Esc> <C-\><C-n>
+tnoremap <M-Tab> <C-\><C-n>
 
 set concealcursor="n"
 
@@ -40,3 +42,4 @@ source $HOME/.config/nvim/plugins/rnvimr.vim
 "-------------
 
 source $HOME/.config/nvim/colors.vim
+source $HOME/.config/nvim/keys.vim
