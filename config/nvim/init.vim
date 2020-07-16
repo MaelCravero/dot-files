@@ -20,14 +20,16 @@ packadd termdebug
 "---PLUGINS---
 
 " Vim-plug install and plugs
-source $HOME/.config/nvim/plugins/plugins.vim
+source $HOME/.config/nvim/plugins.vim
 
 
 " Plugin configs
 source $HOME/.config/nvim/plugins/airline.vim
 source $HOME/.config/nvim/plugins/coc.vim
+source $HOME/.config/nvim/plugins/codi.vim
 source $HOME/.config/nvim/plugins/echodoc.vim
 source $HOME/.config/nvim/plugins/fzf.vim
+source $HOME/.config/nvim/plugins/goyo.vim
 source $HOME/.config/nvim/plugins/indentline.vim
 source $HOME/.config/nvim/plugins/iron.vim
 source $HOME/.config/nvim/plugins/neoformat.vim
@@ -35,9 +37,6 @@ source $HOME/.config/nvim/plugins/nuake.vim
 source $HOME/.config/nvim/plugins/obsession.vim
 source $HOME/.config/nvim/plugins/rnvimr.vim
 
-"______________________________________________________________________________
+"-------------
 
-highlight link CocErrorSign GruvboxRed
-highlight link CocWarningSign GruvboxOrange
-highlight link CocInfoSign GruvboxAqua
-highlight link CocHintSign GruvboxBlue
+source $HOME/.config/nvim/colors.vim

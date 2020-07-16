@@ -64,6 +64,9 @@ Plug 'airblade/vim-rooter'
 " Display indentation guides - now you can read your 234 lines python function
 Plug 'Yggdroot/indentLine'
 
+" Vim but more zen
+Plug 'junegunn/goyo.vim'
+
 
 " --- Edition plugins
 
@@ -91,6 +94,11 @@ Plug 'junegunn/fzf.vim'
 " REPL plugins
 Plug 'Vigemus/iron.nvim'
 Plug 'mtikekar/nvim-send-to-term'
+
+" Auto display of evals
+" FIXME Using this specific fork for virtual text support, switch to the
+" original once it supports it too
+Plug 'ChristianChiarulli/codi.vim'
 
 " Ranger file explorer inside nvim
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
