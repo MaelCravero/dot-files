@@ -36,7 +36,6 @@ source $HOME/.config/nvim/plugins/iron.vim
 source $HOME/.config/nvim/plugins/neoformat.vim
 source $HOME/.config/nvim/plugins/nerdcommenter.vim
 source $HOME/.config/nvim/plugins/nuake.vim
-source $HOME/.config/nvim/plugins/obsession.vim
 source $HOME/.config/nvim/plugins/rnvimr.vim
 source $HOME/.config/nvim/plugins/startify.vim
 source $HOME/.config/nvim/plugins/whichkey.vim

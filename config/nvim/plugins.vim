@@ -25,12 +25,6 @@ Plug 'tlhr/anderson.vim'
 " More motions for dealing with brackets, quotes...
 Plug 'tpope/vim-surround'
 
-" Netrw enhancement for file navigation
-Plug 'tpope/vim-vinegar'
-
-" Better use of sessions
-Plug 'tpope/vim-obsession'
-
 " Better use of the quickfix list
 Plug 'romainl/vim-qf'
 

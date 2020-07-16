@@ -4,6 +4,9 @@
 let mapleader = ","
 let maplocalleader = ";"
 
+" Use rnvimr like vinegar
+nnoremap <silent>- :RnvimrToggle<CR>gw
+
 nnoremap <silent> <Tab> :bnext <CR>
 nnoremap <silent> <S-Tab> :bprevious <CR>
 nnoremap <silent> <M-Tab> :tabn <CR>
