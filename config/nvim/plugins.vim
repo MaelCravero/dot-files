@@ -84,6 +84,12 @@ Plug 'chrisbra/Colorizer'
 " vIM iS NoT aN IDe
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Classy startup-menu
+Plug 'mhinz/vim-startify'
+
+" Never forget a mapping
+Plug 'liuchengxu/vim-which-key'
+
 " Automatically format your code on save
 Plug 'sbdchd/neoformat'
 

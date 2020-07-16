@@ -1,8 +1,20 @@
 " Keymappings
 
 " Leader
-let mapleader = ";"
-let maplocalleader = ","
+let mapleader = ","
+let maplocalleader = ";"
+
+nnoremap <silent> <Tab> :bnext <CR>
+nnoremap <silent> <S-Tab> :bprevious <CR>
+nnoremap <silent> <M-Tab> :tabn <CR>
+
+" Map leader to which_key
+if has_key(plugs, "vim-which-key")
+    nnoremap <silent> <leader> :silent WhichKey ','<CR>
+    vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual ','<CR>
+    nnoremap <silent> <localleader> :silent WhichKey ';'<CR>
+    vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual ';'<CR>
+endif
 
 if has_key(plugs, "coc.nvim")
     " Use tab for trigger completion with characters ahead and navigate.
@@ -52,30 +64,6 @@ if has_key(plugs, "coc.nvim")
         endif
     endfunction
 
-    " Use <TAB> for selections ranges.
-    " NOTE: Requires 'textDocument/selectionRange' support from the language server.
-    " coc-tsserver, coc-python are the examples of servers that support it.
-    nmap <silent> <TAB> <Plug>(coc-range-select)
-    xmap <silent> <TAB> <Plug>(coc-range-select)
-
-    " Mappings using CoCList:
-    " Show all diagnostics.
-    nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-    " Manage extensions.
-    nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-    " Show commands.
-    nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-    " Find symbol of current document.
-    nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-    " Search workspace symbols.
-    nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-    " Do default action for next item.
-    nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-    " Do default action for previous item.
-    nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-    " Resume latest coc list.
-    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
     " Coc snippets
     " Use <C-l> for trigger snippet expand.
     imap <C-l> <Plug>(coc-snippets-expand)
@@ -91,17 +79,6 @@ if has_key(plugs, "coc.nvim")
 
     " Use <C-j> for both expand and jump (make expand higher priority.)
     imap <C-j> <Plug>(coc-snippets-expand-jump)
-
-    "let g:coc_snippet_next = '<tab>'
-
-    " --- Various plugin mappings
-    nmap <space>e : CocCommand explorer<CR>
-endif
-
-if has_key(plugs, "fzf.vim")
-    map <silent><M-e> :Files <CR>
-    map <silent><M-g> :GFiles <CR>
-    map <silent><M-b> :Buffers <CR>
 endif
 
 if has_key(plugs, "iron.nvim")
@@ -119,6 +96,6 @@ if has_key(plugs, "nuake")
 endif
 
 if has_key(plugs, "rnvimr")
-    nnoremap <space>r :RnvimrToggle<CR>
-    tnoremap <space>r <C-\><C-n>:RnvimrToggle<CR>
+    nnoremap <leader>r :RnvimrToggle<CR>
+    tnoremap <leader>r <C-\><C-n>:RnvimrToggle<CR>
 endif
