@@ -1,0 +1,9 @@
+# Vim files
+tags
+Session.vim
+
+# C/C++ files
+*.o
+
+# OCaml files
+*.cmo

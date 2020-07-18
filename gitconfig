@@ -1,0 +1,7 @@
+[user]
+	email = mael.cravero@epita.fr
+	name = Mael Cravero
+[pull]
+	rebase = true
+[core]
+	excludefiles = /home/mael/.gitignore

@@ -2,8 +2,22 @@
 
 mkdir -p ~/.config
 
-dots="zshrc vimrc i3blocks.conf i3status.conf clang-format"
-configs="nvim rofi i3"
+dots="\
+    zshrc\
+    vimrc\
+    i3blocks.conf\
+    i3status.conf\
+    clang-format\
+    ocamlformat\
+    gitignore\
+    gitconfig\
+    "
+
+configs="\
+    nvim\
+    rofi\
+    i3\
+    "
 
 # Home dot files
 for elt in $dots; do
