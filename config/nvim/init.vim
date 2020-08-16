@@ -11,9 +11,12 @@ set cursorline
 set noshowcmd
 set noshowmode
 
-tnoremap <C-W><C-W> <C-\><C-n><C-W><C-W>
+tnoremap <C-W> <C-\><C-n><C-W>
 
 set concealcursor="n"
+
+" Set custom filetypes
+autocmd BufNewFile,BufRead *.eliom,*.eliomi set filetype=ocaml
 
 " Default packages
 packadd termdebug
