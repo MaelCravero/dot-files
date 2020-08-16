@@ -4,9 +4,6 @@
 let mapleader = ","
 let maplocalleader = ";"
 
-" Use rnvimr like vinegar
-nnoremap <silent>- :RnvimrToggle<CR>gw
-
 nnoremap <silent> <Tab> :bnext <CR>
 nnoremap <silent> <S-Tab> :bprevious <CR>
 nnoremap <silent> <M-Tab> :tabn <CR>
@@ -17,6 +14,18 @@ if has_key(plugs, "vim-which-key")
     vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual ','<CR>
     nnoremap <silent> <localleader> :silent WhichKey ';'<CR>
     vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual ';'<CR>
+endif
+
+if has_key(plugs, "vim-airline")
+  nmap <localleader>& <Plug>AirlineSelectTab1
+  nmap <localleader>é <Plug>AirlineSelectTab2
+  nmap <localleader>" <Plug>AirlineSelectTab3
+  nmap <localleader>' <Plug>AirlineSelectTab4
+  nmap <localleader>( <Plug>AirlineSelectTab5
+  nmap <localleader>- <Plug>AirlineSelectTab6
+  nmap <localleader>è <Plug>AirlineSelectTab7
+  nmap <localleader>_ <Plug>AirlineSelectTab8
+  nmap <localleader>ç <Plug>AirlineSelectTab9
 endif
 
 if has_key(plugs, "coc.nvim")
@@ -101,4 +110,7 @@ endif
 if has_key(plugs, "rnvimr")
     nnoremap <leader>r :RnvimrToggle<CR>
     tnoremap <leader>r <C-\><C-n>:RnvimrToggle<CR>
+
+    " Use rnvimr like vinegar
+    nnoremap <silent>- :RnvimrToggle<CR>
 endif
