@@ -3,11 +3,12 @@
 mkdir -p ~/.config
 
 dots="\
+    Xressources\
     zshrc\
     vimrc\
-    i3blocks.conf\
     i3status.conf\
     clang-format\
+    ocamlinit\
     ocamlformat\
     gitignore\
     gitconfig\
@@ -17,6 +18,9 @@ configs="\
     nvim\
     rofi\
     i3\
+    alacritty\
+    picom\
+    volumeicon\
     "
 
 # Home dot files
