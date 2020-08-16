@@ -4,6 +4,7 @@ mkdir -p ~/.config
 
 dots="\
     Xressources\
+    profile\
     zshrc\
     vimrc\
     i3status.conf\
