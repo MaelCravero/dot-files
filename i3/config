@@ -5,7 +5,7 @@
 set $mod Mod4
 
 # Nice startup sound
-exec --no-startup-id mpg123 ~/.config/i3/startup.mp3
+#exec --no-startup-id mpg123 ~/.config/i3/startup.mp3
 
 exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id redshift-gtk -g 0.9:0.9:0.7 &
@@ -56,8 +56,8 @@ bindsym $mod+Ctrl+semicolon exec terminal -e 'alsamixer'
 ################################################################################################
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # The most important shortcuts
 bindsym $mod+i exec --no-startup-id mpg123 ~/.config/i3/camel.mp3 &
@@ -260,7 +260,7 @@ bindsym $mod+Tab exec --no-startup-id blurlock
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore; sleep 1 #; compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
