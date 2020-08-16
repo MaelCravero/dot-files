@@ -27,6 +27,7 @@ let g:which_key_map['z'] = [ ':Goyo'                      , 'zen' ]
 let g:which_key_map['b'] = {
             \ 'name' : '+buffers',
             \ 'd' : [':bd', 'delete'],
+            \ 'f' : [':Buffers', 'find'],
             \ 'l' : [':blast', 'last'],
             \}
 
@@ -34,6 +35,7 @@ let g:which_key_map['F'] = {
             \ 'name' : '+FZF',
             \ 'c' : [':Colors', 'colors'],
             \ 'b' : [':Buffers', 'buffers'],
+            \ 'h' : [':Helptags', 'help'],
             \ 'l' : [':Lines', 'lines'],
             \ 't' : [':Tags', 'tags'],
             \}
@@ -70,7 +72,16 @@ let g:which_key_map['l'] = {
             \}
 
 " Localleader mappings
-" TODO ?
+let g:which_key_map_local["1-9"] = "tab 1-9"
+let g:which_key_map_local['&'] = 'which_key_ignore' " Airline tabs mappings
+let g:which_key_map_local['é'] = 'which_key_ignore'
+let g:which_key_map_local['"'] = 'which_key_ignore'
+let g:which_key_map_local["'"] = 'which_key_ignore'
+let g:which_key_map_local['('] = 'which_key_ignore'
+let g:which_key_map_local['-'] = 'which_key_ignore'
+let g:which_key_map_local['è'] = 'which_key_ignore'
+let g:which_key_map_local['_'] = 'which_key_ignore'
+let g:which_key_map_local['ç'] = 'which_key_ignore'
 
 " Register maps
 call which_key#register(',', "g:which_key_map")
