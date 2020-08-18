@@ -41,6 +41,7 @@ source $HOME/.config/nvim/plugins/nerdcommenter.vim
 source $HOME/.config/nvim/plugins/nuake.vim
 source $HOME/.config/nvim/plugins/rnvimr.vim
 source $HOME/.config/nvim/plugins/startify.vim
+source $HOME/.config/nvim/plugins/vimtex.vim
 source $HOME/.config/nvim/plugins/whichkey.vim
 
 "-------------
