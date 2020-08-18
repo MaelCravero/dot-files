@@ -3,7 +3,7 @@
 mkdir -p ~/.config
 
 dots="\
-    Xressources\
+    Xresources\
     profile\
     zshrc\
     vimrc\
