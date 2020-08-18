@@ -43,8 +43,8 @@
 window {
     width:      25.0000em ;
     // border:     0px 2px 0px 0px ;
-    location:   southeast;
-    anchor:     southeast;
+    location:   northeast;
+    anchor:     northeast;
     text-color: var(foreground);
     height:     60.0000% ;
 }
@@ -138,6 +138,6 @@ button {
 textbox-prompt-sep {
     margin:     0px 0.3000em 0px 0px ;
     expand:     false;
-    str:        ":";
+    str:        "";
     text-color: var(normal-foreground);
 }

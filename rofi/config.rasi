@@ -4,4 +4,9 @@ configuration {
     font: "DejaVuSansMono Nerd Font 10";
     combi-modi: "window,drun,run";
     show-icons: true;
+    display-combi: " ";
+    display-window: " ";
+    display-run: " ";
+    display-drun: " ";
+    //sidebar-mode: true;
 }
