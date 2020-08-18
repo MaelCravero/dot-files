@@ -19,6 +19,7 @@ configs="\
     nvim\
     rofi\
     i3\
+    dunst\
     alacritty\
     picom\
     volumeicon\
