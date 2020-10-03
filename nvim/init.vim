@@ -17,6 +17,7 @@ set concealcursor="n"
 
 " Set custom filetypes
 autocmd BufNewFile,BufRead *.eliom,*.eliomi set filetype=ocaml
+autocmd BufNewFile,BufRead *.tikz, set filetype=tex
 
 " Default packages
 packadd termdebug
@@ -40,6 +41,7 @@ source $HOME/.config/nvim/plugins/neoformat.vim
 source $HOME/.config/nvim/plugins/nerdcommenter.vim
 source $HOME/.config/nvim/plugins/nuake.vim
 source $HOME/.config/nvim/plugins/rnvimr.vim
+source $HOME/.config/nvim/plugins/scrollbar.vim
 source $HOME/.config/nvim/plugins/startify.vim
 source $HOME/.config/nvim/plugins/vimtex.vim
 source $HOME/.config/nvim/plugins/whichkey.vim

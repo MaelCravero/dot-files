@@ -76,8 +76,8 @@ autocmd FileType c,h set cindent
 autocmd FileType ocaml set shiftwidth=2
 autocmd FileType ocaml set softtabstop=2
 
-au BufNewFile,BufRead,BufEnter *.ll,*.yy set shiftwidth=2
-au BufNewFile,BufRead,BufEnter *.ll,*.yy set softtabstop=2
+au BufNewFile,BufRead,BufEnter *.ll,*.yy,*.tikz set shiftwidth=2
+au BufNewFile,BufRead,BufEnter *.ll,*.yy,*.tikz set softtabstop=2
 
 
 "---PLUGINS---
@@ -89,6 +89,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'ayu-theme/ayu-vim'
 Plug 'AlessandroYorba/Alduin'
 Plug 'tlhr/anderson.vim'
+Plug 'ajmwagar/deus'
 
 " Essential tweaks
 Plug 'tpope/vim-surround'

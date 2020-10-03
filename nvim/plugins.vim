@@ -18,7 +18,13 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'ayu-theme/ayu-vim'
 Plug 'AlessandroYorba/Alduin'
 Plug 'tlhr/anderson.vim'
+Plug 'ajmwagar/deus'
 
+" Scrollbar
+Plug 'Xuyuanp/scrollbar.nvim'
+
+" Fade windows
+Plug 'TaDaa/vimade'
 
 " --- Essential tweaks
 
