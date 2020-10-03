@@ -43,10 +43,11 @@
 window {
     width:      25.0000em ;
     // border:     0px 2px 0px 0px ;
-    location:   northeast;
-    anchor:     northeast;
+    //location:   southeast;
+//    anchor:     northeast;
     text-color: var(foreground);
-    height:     60.0000% ;
+    height:     40.0000% ;
+    padding: 10px;
 }
 mode-switcher {
     padding:          4px ;
