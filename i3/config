@@ -14,6 +14,9 @@ exec --no-startup-id discord --start-minimized
 exec --no-startup-id slack -u
 exec --no-startup-id thunderbird
 
+# Polybar
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
@@ -323,7 +326,7 @@ set $gruvbox_accent #d79921
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-#	i3bar_command i3bar
+	i3bar_command i3bar
 	status_command i3status
 	position bottom
 
@@ -370,6 +373,7 @@ bindsym $mod+semicolon bar mode toggle
 # Set inner/outer gaps
 gaps inner 14
 gaps outer -2
+#gaps bottom 32
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>

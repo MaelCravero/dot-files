@@ -23,6 +23,7 @@ configs="\
     alacritty\
     picom\
     volumeicon\
+    polybar\
     "
 
 # Home dot files
