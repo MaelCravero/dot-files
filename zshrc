@@ -107,12 +107,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#PS1="[\$?] > "
+PS1="[\$?] > "
 
 alias zource="source ~/.zshrc"
-alias zedit="$EDIT ~/.zhsrc"
+alias zedit="$EDITOR ~/.zshrc"
 alias make="make -j4"
 alias gdb="gdb -q"
+
+alias pyvenv="python -m venv env"
 
 # opam configuration
 test -r /home/mael/.opam/opam-init/init.zsh && . /home/mael/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
