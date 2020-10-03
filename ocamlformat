@@ -33,7 +33,7 @@ disambiguate-non-breaking-match=false
 
 doc-comments-padding=2
 doc-comments-tag-only=default
-doc-comments=after-when-possible
+doc-comments=before
 
 dock-collection-brackets=true
 
