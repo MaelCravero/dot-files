@@ -24,6 +24,8 @@ configs="\
     picom\
     volumeicon\
     polybar\
+    bspwm\
+    sxhkd\
     "
 
 # Home dot files
