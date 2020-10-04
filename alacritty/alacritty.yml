@@ -1,16 +1,16 @@
 # Colors (Gruvbox dark)
 font:
   normal:
-    family: Hack Nerd Font
+    family: DejaVuSansMono Nerd Font
     style: Regular
 
   bold:
-    family: Hack Nerd Font
+    family: DejaVuSansMono Nerd Font
 
   italic:
-    family: Hack Nerd Font
+    family: DejaVuSansMono Nerd Font
 
-  size: 9
+  size: 8
 
 colors:
   # Default colors
@@ -18,7 +18,7 @@ colors:
     # hard contrast: background = '0x1d2021'
     background: '0x282828'
     # soft contrast: background = '0x32302f'
-  foreground: '0xfbf1c7'
+    foreground: '0xfbf1c7'
 
   # Normal colors
   normal:
