@@ -6,6 +6,9 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # Start polybar
 ~/.config/polybar/launch.sh
 
+# Start tint2
+tint2 &
+
 # Start programs if bspwm is loaded for the first time
 [ "$1" -eq 0 ] && ~/.config/bspwm/startup.sh
 

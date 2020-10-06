@@ -24,6 +24,7 @@ configs="\
     picom\
     volumeicon\
     polybar\
+    tint2\
     bspwm\
     sxhkd\
     "
