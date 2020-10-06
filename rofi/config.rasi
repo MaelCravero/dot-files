@@ -8,5 +8,5 @@ configuration {
     display-window: " ";
     display-run: " ";
     display-drun: " ";
-    //sidebar-mode: true;
+    sidebar-mode: true;
 }

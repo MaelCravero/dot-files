@@ -44,6 +44,10 @@ super + p
 # bspwm hotkeys
 #
 
+# start menu
+super + twosuperior
+    ~/.config/polybar/scripts/start_menu
+
 # exit bspwm
 super + shift + e
     bspc quit
