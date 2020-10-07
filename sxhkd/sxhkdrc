@@ -46,7 +46,7 @@ super + p
 
 # start menu
 super + twosuperior
-    ~/.config/polybar/scripts/start_menu
+    ~/.config/polybar/scripts/start_menu.sh
 
 # exit bspwm
 super + shift + e
