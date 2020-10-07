@@ -66,6 +66,7 @@ super + shift + q
 
 # alternate between the tiled and monocle layout
 super + m
+    xdo raise -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2); \
     bspc desktop -l next
 
 # swap the current node and the biggest window
@@ -77,8 +78,14 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
-    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {t,shift + t,s}
+    xdo raise -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2); \
+    bspc node -t {tiled,pseudo_tiled,floating}
+
+# set fullscreen
+super + f
+    xdo lower -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2); \
+    bspc node -t fullscreen
 
 # set the node flags
 super + ctrl + {m,x,y,z}
