@@ -22,7 +22,6 @@ configs="\
     dunst\
     alacritty\
     picom\
-    volumeicon\
     polybar\
     tint2\
     bspwm\
