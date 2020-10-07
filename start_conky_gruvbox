@@ -1,6 +1,0 @@
-#!/bin/sh
-
-conky -c ~/.config/conky/conky_gruvbox &&
-# conky -c ~/.config/conky/conky1.10_shortcuts_gruvbox &&
-
-exit 0
