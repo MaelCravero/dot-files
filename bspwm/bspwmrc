@@ -3,12 +3,6 @@
 # Start sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-# Start polybar
-~/.config/polybar/launch.sh
-
-# Start tint2
-tint2 &
-
 # Start programs if bspwm is loaded for the first time
 [ "$1" -eq 0 ] && ~/.config/bspwm/startup.sh
 
@@ -19,7 +13,17 @@ tint2 &
 #                    #
 ######################
 
-bspc monitor -d '1' '2' '3' '4' '5' '6'
+[ "$1" -eq 0 ] && bspc monitor -d '1' '2' '3' '4' '5' '6'
+
+# Update monitor setup
+~/.config/bspwm/update_monitors.sh "eDP1" "HDMI1" '1' '2'
+
+# Start polybar
+~/.config/polybar/launch.sh
+
+# Start tint2
+pkill tint2
+tint2 &
 
 bspc config focus_follows_pointer true
 
@@ -33,5 +37,5 @@ bspc config gapless_monocle      false
 bspc config focused_border_color '#D79921'
 
 bspc rule -a Gimp desktop='^6' state=floating follow=on
-bspc rule -a Brave desktop='^2' follow=on
+bspc rule -a brave desktop='^2' follow=on
 bspc rule -a Chromium desktop='^2' follow=on
