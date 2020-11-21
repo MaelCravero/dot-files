@@ -34,15 +34,21 @@ source $HOME/.config/nvim/plugins/coc.vim
 source $HOME/.config/nvim/plugins/codi.vim
 source $HOME/.config/nvim/plugins/echodoc.vim
 source $HOME/.config/nvim/plugins/fzf.vim
+source $HOME/.config/nvim/plugins/gina.vim
+source $HOME/.config/nvim/plugins/gitgutter.vim
 source $HOME/.config/nvim/plugins/goyo.vim
 source $HOME/.config/nvim/plugins/indentline.vim
 source $HOME/.config/nvim/plugins/iron.vim
 source $HOME/.config/nvim/plugins/neoformat.vim
 source $HOME/.config/nvim/plugins/nerdcommenter.vim
 source $HOME/.config/nvim/plugins/nuake.vim
+source $HOME/.config/nvim/plugins/quickscope.vim
 source $HOME/.config/nvim/plugins/rnvimr.vim
-source $HOME/.config/nvim/plugins/scrollbar.vim
+"source $HOME/.config/nvim/plugins/scrollbar.vim
+source $HOME/.config/nvim/plugins/sendtoterm.vim
+source $HOME/.config/nvim/plugins/sneak.vim
 source $HOME/.config/nvim/plugins/startify.vim
+source $HOME/.config/nvim/plugins/tree.vim
 source $HOME/.config/nvim/plugins/vimtex.vim
 source $HOME/.config/nvim/plugins/whichkey.vim
 

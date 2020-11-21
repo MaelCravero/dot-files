@@ -6,26 +6,16 @@ let maplocalleader = ";"
 
 nnoremap <silent> <Tab> :bnext <CR>
 nnoremap <silent> <S-Tab> :bprevious <CR>
-nnoremap <silent> <M-Tab> :tabn <CR>
+
+nnoremap <C-T> :let &background = (&background == "dark" ? "light" : "dark")<CR>
 
 " Map leader to which_key
 if has_key(plugs, "vim-which-key")
     nnoremap <silent> <leader> :silent WhichKey ','<CR>
     vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual ','<CR>
+
     nnoremap <silent> <localleader> :silent WhichKey ';'<CR>
     vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual ';'<CR>
-endif
-
-if has_key(plugs, "vim-airline")
-  nmap <localleader>& <Plug>AirlineSelectTab1
-  nmap <localleader>é <Plug>AirlineSelectTab2
-  nmap <localleader>" <Plug>AirlineSelectTab3
-  nmap <localleader>' <Plug>AirlineSelectTab4
-  nmap <localleader>( <Plug>AirlineSelectTab5
-  nmap <localleader>- <Plug>AirlineSelectTab6
-  nmap <localleader>è <Plug>AirlineSelectTab7
-  nmap <localleader>_ <Plug>AirlineSelectTab8
-  nmap <localleader>ç <Plug>AirlineSelectTab9
 endif
 
 if has_key(plugs, "coc.nvim")
@@ -46,7 +36,11 @@ if has_key(plugs, "coc.nvim")
     " Use <c-space> to trigger completion.
     inoremap <silent><expr> <c-space> coc#refresh()
 
-    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+    " Use <cr> to confirm completion
+    "inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+    "            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+
     " position. Coc only does snippet and additional edit on confirm.
     if has('patch8.1.1068')
         " Use `complete_info` if your (Neo)Vim version supports it.
@@ -54,6 +48,12 @@ if has_key(plugs, "coc.nvim")
     else
         imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
     endif
+
+    " Use escape to confirm displayed completion and switch to normal mode.
+    autocmd BufEnter *
+                \ inoremap <buffer><silent><expr> <Esc>
+                \ pumvisible() ? "\<C-Y>\<Esc>"
+                \: "\<C-g>u\<Esc>"
 
     " Use `[g` and `]g` to navigate diagnostics
     nmap <silent> gn <Plug>(coc-diagnostic-prev)
@@ -113,4 +113,21 @@ if has_key(plugs, "rnvimr")
 
     " Use rnvimr like vinegar
     nnoremap <silent>- :RnvimrToggle<CR>
+endif
+
+if has_key(plugs, "barbar.nvim")
+    nnoremap <silent> <Tab> :BufferNext<CR>
+    nnoremap <silent> <S-Tab> :BufferPrevious<CR>
+    nnoremap <silent> gt :BufferPick<CR>
+endif
+
+if has_key(plugs, "sideways.vim")
+    nnoremap <M-h> :SidewaysLeft<CR>
+    nnoremap <M-l> :SidewaysRight<CR>
+
+    " Argument text object
+    omap a <Plug>SidewaysArgumentTextobjI
+    xmap a <Plug>SidewaysArgumentTextobjI
+    omap A <Plug>SidewaysArgumentTextobjA
+    xmap A <Plug>SidewaysArgumentTextobjA
 endif

@@ -20,9 +20,12 @@ let g:startify_custom_header = [
         \]
 
 " Save sessions in current working dir to load them automatically
-let g:startify_session_dir = "$PWD"
+" let g:startify_session_dir = "$PWD"
+
+"let g:startify_session_dir = "$PWD/.vim-sessions"
 
 let g:startify_lists = [
+            \ { 'type': 'sessions',  'header': ['   Sessions']       },
             \ { 'type': 'files', 'header': ['     Files'] },
             \ { 'type': 'dir', 'header': ['     Current dir'.getcwd()] },
             \ { 'type': 'bookmarks', 'header': ['     Bookmarks'] },
@@ -30,9 +33,13 @@ let g:startify_lists = [
 
 let g:startify_bookmarks = [
             \ {'.': '~/.config/nvim/init.vim'},
+            \ {'p': '~/.config/nvim/plugins.vim'},
+            \ {'k': '~/.config/nvim/keys.vim'},
             \ {'c': '~/.vimrc'},
-            \ {'i': '~/.config/i3/config'},
             \ {'z': '~/.zshrc'},
+            \ {'i': '~/.config/i3/config'},
+            \ {'b': '~/.config/bspwm/bspwmrc'},
+            \ {'s': '~/.config/sxhkd/sxhkdrc'},
             \]
 
 let g:startify_files_number = 5

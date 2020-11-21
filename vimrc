@@ -29,6 +29,8 @@ set swb=usetab,split
 
 
 " Leader
+nnoremap <C-n> ;
+nnoremap <C-p> ,
 let mapleader = ";"
 let maplocalleader = ","
 
@@ -55,18 +57,29 @@ set completeopt=longest,menuone
 map <C-f> <C-]>
 
 " Arrow mappings
-"nnoremap m l
-"nnoremap l k
-"nnoremap k j
-"nnoremap j h
-"nnoremap <Right> <C-w>l
-"nnoremap <Left> <C-w>h
-"nnoremap <Up> <C-w>k
-"nnoremap <Down> <C-w>j
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap <Right> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+
+vnoremap <Right> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Up> <Nop>
+vnoremap <Down> <Nop>
+
 nnoremap <C-Right> <C-w>>
 nnoremap <C-Left> <C-w><
 nnoremap <C-Up> <C-w>+
 nnoremap <C-Down> <C-w>-
+
+" Navigate virtual lines
+nnoremap j gj
+nnoremap k gk
 
 
 " Indentation

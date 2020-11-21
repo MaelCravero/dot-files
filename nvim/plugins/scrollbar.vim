@@ -1,3 +1,5 @@
+" ScrollBar
+
 augroup your_config_scrollbar_nvim
     autocmd!
     autocmd BufEnter    * silent! lua require('scrollbar').show()

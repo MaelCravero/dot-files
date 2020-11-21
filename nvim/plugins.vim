@@ -18,13 +18,12 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'ayu-theme/ayu-vim'
 Plug 'AlessandroYorba/Alduin'
 Plug 'tlhr/anderson.vim'
-Plug 'ajmwagar/deus'
 
 " Scrollbar
-Plug 'Xuyuanp/scrollbar.nvim'
+"Plug 'Xuyuanp/scrollbar.nvim'
 
 " Fade windows
-Plug 'TaDaa/vimade'
+"Plug 'TaDaa/vimade'
 
 " --- Essential tweaks
 
@@ -43,14 +42,30 @@ Plug 'preservim/nerdcommenter'
 " this_is_now_more_than_one_word - easier snake/camelcase editing
 Plug 'chaoren/vim-wordmotion'
 
+" Move words
+Plug 'AndrewRadev/sideways.vim'
+
+Plug 'unblevable/quick-scope'
+Plug 'justinmk/vim-sneak'
+
+" --- Git integration
+
+" Amazing git commands from vim - useful for git-blaming your friends
+Plug 'tpope/vim-fugitive'
+
+" Another git wrapper for vim, more customizable
+Plug 'lambdalisue/gina.vim'
+
+" Pop-up window containing commit details
+Plug 'rhysd/git-messenger.vim'
+
+" Show git hunks and navigate them with ease
+Plug 'airblade/vim-gitgutter'
 
 " --- Additional features
 
 " Tags are cool yo
 Plug 'ludovicchabant/vim-gutentags'
-
-" Amazing git commands from vim - useful for git-blaming your friends
-Plug 'tpope/vim-fugitive'
 
 " Various code snippets
 Plug 'honza/vim-snippets'
@@ -61,12 +76,14 @@ Plug 'sheerun/vim-polyglot'
 " Automatically sets your nvim pwd to your project root
 Plug 'airblade/vim-rooter'
 
-" Display indentation guides - now you can read your 234 lines python function
+" Display indentation guides - now you can read your 342 lines python function
 Plug 'Yggdroot/indentLine'
 
 " Vim but more zen
 Plug 'junegunn/goyo.vim'
 
+" Delete hidden buffers
+Plug 'Asheq/close-buffers.vim'
 
 " --- Edition plugins
 
@@ -87,6 +104,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Classy startup-menu
 Plug 'mhinz/vim-startify'
 
+" IDE-like tabs
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+
+" File explorer
+Plug 'kyazdani42/nvim-tree.lua'
+
 " Never forget a mapping
 Plug 'liuchengxu/vim-which-key'
 
@@ -96,15 +120,14 @@ Plug 'sbdchd/neoformat'
 " Great fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'antoinemadec/coc-fzf'
 
 " REPL plugins
 Plug 'Vigemus/iron.nvim'
 Plug 'mtikekar/nvim-send-to-term'
 
 " Auto display of evals
-" FIXME Using this specific fork for virtual text support, switch to the
-" original once it supports it too
-Plug 'ChristianChiarulli/codi.vim'
+Plug 'metakirby5/codi.vim'
 
 " Ranger file explorer inside nvim
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
@@ -114,9 +137,6 @@ Plug 'Shougo/echodoc.vim'
 
 " Small pop-up terminal panel
 Plug 'Lenovsky/nuake'
-
-" Pop-up window containing commit details
-Plug 'rhysd/git-messenger.vim'
 
 call plug#end()
 

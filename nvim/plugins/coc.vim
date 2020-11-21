@@ -1,5 +1,15 @@
 " COC
 
+" COC extensions to install
+let g:coc_global_extensions = [
+            \ 'coc-actions',
+            \ 'coc-marketplace',
+            \ 'coc-json',
+            \ 'coc-snippets',
+            \ 'coc-clangd',
+            \ 'coc-vimlsp',
+            \]
+
 " TextEdit might fail if hidden is not set.
 set hidden
 

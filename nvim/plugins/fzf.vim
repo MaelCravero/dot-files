@@ -6,7 +6,7 @@ let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --exclude .git'
 let g:fzf_buffers_jump = 1
 
 "Open FZF and choose floating window
-let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
+"let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
 
 function! OpenFloatingWin()
     let height = &lines - 3
