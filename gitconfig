@@ -5,3 +5,5 @@
 	rebase = true
 [core]
 	excludefiles = /home/mael/.gitignore
+[commit]
+	verbose = true
