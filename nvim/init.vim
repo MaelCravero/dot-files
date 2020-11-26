@@ -50,6 +50,7 @@ source $HOME/.config/nvim/plugins/sneak.vim
 source $HOME/.config/nvim/plugins/startify.vim
 source $HOME/.config/nvim/plugins/tree.vim
 source $HOME/.config/nvim/plugins/vimtex.vim
+source $HOME/.config/nvim/plugins/vista.vim
 source $HOME/.config/nvim/plugins/whichkey.vim
 
 "-------------

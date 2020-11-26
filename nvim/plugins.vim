@@ -111,6 +111,9 @@ Plug 'romgrk/barbar.nvim'
 " File explorer
 Plug 'kyazdani42/nvim-tree.lua'
 
+" View tags and symbols
+Plug 'liuchengxu/vista.vim'
+
 " Never forget a mapping
 Plug 'liuchengxu/vim-which-key'
 
@@ -121,6 +124,9 @@ Plug 'sbdchd/neoformat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf'
+
+" Clap
+Plug 'liuchengxu/vim-clap'
 
 " REPL plugins
 Plug 'Vigemus/iron.nvim'

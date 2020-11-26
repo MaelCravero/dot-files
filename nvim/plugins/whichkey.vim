@@ -96,12 +96,21 @@ let g:which_key_map['h'] = {
             \ 'u' : ['<Plug>(GitGutterUndoHunk)',     'undo'],
             \}
 
+let g:which_key_map['v'] = {
+            \ 'name' : '+vista',
+            \ 'v' : [':Vista', 'enable'],
+            \ 'f' : [':Vista finder', 'find'],
+            \ 'c' : [':Vista finder clap', 'clap'],
+            \ 's' : [':Vista show', 'show'],
+            \}
+
 " Localleader LSP mappings
 let g:which_key_map_local = {
             \ 'l' : [':CocFzfList', 'list'],
             \ 'a' : [':CocFzfList actions', 'actions'],
             \ 'd' : [':CocFzfList diagnostics', 'diagnostics'],
             \ 'c' : [':CocFzfList commands', 'commands'],
+            \ 'o' : [':CocFzfList outline', 'outline'],
             \ 'n' : ['<Plug>(coc-diagnostic-next)', 'next'],
             \ 'N' : ['<Plug>(coc-diagnostic-next-error)', 'next error'],
             \ 'p' : ['<Plug>(coc-diagnostic-prev)', 'previous'],
