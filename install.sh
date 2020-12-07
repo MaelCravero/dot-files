@@ -47,3 +47,16 @@ echo -n "vim-plug... " && curl -fLso ~/.vim/autoload/plug.vim --create-dirs \
     echo "OK" || echo "KO"
 
 echo -n "oh my zsh... " && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && echo "OK"
+
+# Konsole profiles and colorschemes
+KONSOLE_CONFIG_DIR="konsole-config"
+KONSOLE_LOCAL_DIR="$HOME/.local/share/konsole"
+mkdir -p $KONSOLE_LOCAL_DIR
+
+KONSOLE_NB_THEMES="$(ls $KONSOLE_CONFIG_DIR | wc -l)"
+i=1
+echo "Konsole config..."
+for elt in $(ls $KONSOLE_CONFIG_DIR); do
+    echo -n "    $i/$KONSOLE_NB_THEMES - $elt... " && ln -s $PWD/$KONSOLE_CONFIG_DIR/$elt $KONSOLE_LOCAL_DIR/$elt && echo "OK"
+done
+echo "Konsole config done"
