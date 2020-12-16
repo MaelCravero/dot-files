@@ -48,6 +48,12 @@ echo -n "vim-plug... " && curl -fLso ~/.vim/autoload/plug.vim --create-dirs \
 
 echo -n "oh my zsh... " && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && echo "OK"
 
+# custom oh my zsh plugins
+ZSH_CUSTOM=~/.oh-my-zsh/custom/plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM"/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_CUSTOM"/zsh-syntax-highlighting
+git clone https://github.com/softmoth/zsh-vim-mode.git "$ZSH_CUSTOM"/zsh-vim-mode
+
 # Konsole profiles and colorschemes
 KONSOLE_CONFIG_DIR="konsole-config"
 KONSOLE_LOCAL_DIR="$HOME/.local/share/konsole"

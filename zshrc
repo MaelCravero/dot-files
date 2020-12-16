@@ -72,11 +72,12 @@ plugins=(
     git
     catimg
     colored-man-pages
-    zsh-syntax-highlighting
     bgnotify
     git-prompt
-    zsh-autosuggestions
     fzf
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+#    zsh-vim-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -111,10 +112,35 @@ PS1="[\$?] > "
 
 alias zource="source ~/.zshrc"
 alias zedit="$EDITOR ~/.zshrc"
-alias make="make -j4"
 alias gdb="gdb -q"
 
 alias pyvenv="python -m venv env"
+
+export MAKEFLAGS=-j4
+export OPAMJOBS=4
+
+# Vim mode config
+MODE_CURSOR_VIINS="blinking bar"
+MODE_CURSOR_REPLACE="red blinking underline"
+MODE_CURSOR_VICMD="green block"
+MODE_CURSOR_SEARCH="steady underline"
+MODE_CURSOR_VISUAL="steady bar"
+MODE_CURSOR_VLINE="yellow"
+
+MODE_INDICATOR_VIINS='%F{15}<%F{8}INSERT<%f'
+MODE_INDICATOR_VICMD='%F{10}<%F{2}NORMAL<%f'
+MODE_INDICATOR_REPLACE='%F{9}<%F{1}REPLACE<%f'
+MODE_INDICATOR_SEARCH='%F{13}<%F{5}SEARCH<%f'
+MODE_INDICATOR_VISUAL='%F{12}<%F{4}VISUAL<%f'
+MODE_INDICATOR_VLINE='%F{12}<%F{4}V-LINE<%f'
+
+#PS1="${MODE_INDICATOR_PROMPT} [\$?] > "
+
+# Autosuggest config
+bindkey "^ " autosuggest-execute
+
+# Cargo completion
+fpath+=~/.zfunc
 
 # opam configuration
 test -r /home/mael/.opam/opam-init/init.zsh && . /home/mael/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
