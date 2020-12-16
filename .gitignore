@@ -1,0 +1,6 @@
+__LAST__
+Session.vim
+tags
+tint2/*.backup.*
+yarn.lock
+node_modules
