@@ -9,12 +9,13 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar
-# polybar -c ~/.config/polybar/config.ini main &
+# Primary screen first to get the trail
+#MONITOR="eDP1" polybar -c ~/.config/polybar/config.ini main &
+
+# All remaining screens afterwards
 if type "xrandr"; then
-  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    echo $m;
-    MONITOR=$m polybar -c ~/.config/polybar/config.ini main &
-done
-else
-    polybar -c ~/.config/polybar/config.ini main &
+    for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+        echo $m;
+        MONITOR=$m polybar -c ~/.config/polybar/config.ini main &
+    done
 fi

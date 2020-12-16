@@ -119,6 +119,9 @@ alias pyvenv="python -m venv env"
 export MAKEFLAGS=-j4
 export OPAMJOBS=4
 
+# Remote neovim
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
+
 # Vim mode config
 MODE_CURSOR_VIINS="blinking bar"
 MODE_CURSOR_REPLACE="red blinking underline"
