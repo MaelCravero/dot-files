@@ -30,6 +30,7 @@ source $HOME/.config/nvim/plugins.vim
 
 " Plugin configs
 source $HOME/.config/nvim/plugins/airline.vim
+source $HOME/.config/nvim/plugins/clap.vim
 source $HOME/.config/nvim/plugins/coc.vim
 source $HOME/.config/nvim/plugins/codi.vim
 source $HOME/.config/nvim/plugins/echodoc.vim

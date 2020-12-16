@@ -1,4 +1,4 @@
-" TODO auto-install vim-plug
+"" TODO auto-install vim-plug
 
 call plug#begin('~/.config/nvim/.plugged')
 
@@ -34,7 +34,7 @@ Plug 'tpope/vim-surround'
 Plug 'romainl/vim-qf'
 
 " Adds matching quote/bracket/...
-Plug 'Townk/vim-autoclose'
+" Plug 'Townk/vim-autoclose'
 
 " Quick comment/uncomment
 Plug 'preservim/nerdcommenter'
