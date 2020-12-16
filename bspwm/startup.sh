@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # Startup programs
-setxkbmap -option "caps:escape"
+setxkbmap -option "ctrl:nocaps"
+xcape -e "Control_L=Escape"
 redshift-gtk -g 0.9:0.9:0.7 &
 nm-applet &
 
 pulseaudio --start
-picom -b
 
-discord --start-minimized &
-slack -u &
-thunderbird &
+#discord --start-minimized &
+#slack -u &
+#thunderbird &
 
 xautolock -time 10 -locker "betterlockscreen -l" &
 

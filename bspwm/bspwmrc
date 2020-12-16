@@ -6,6 +6,9 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # Start programs if bspwm is loaded for the first time
 [ "$1" -eq 0 ] && ~/.config/bspwm/startup.sh
 
+# Set random wallpaper as exported variable
+source ~/.config/bspwm/set_wallpaper.sh
+
 
 ######################
 #                    #
@@ -24,6 +27,10 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # Start tint2
 pkill tint2
 tint2 &
+
+# Restart picom
+pkill picom
+picom -b
 
 bspc config focus_follows_pointer true
 

@@ -35,3 +35,5 @@ if xrandr | grep -o "$EXTERNAL_MONITOR connected" > /dev/null; then
 else
     monitor_remove $@
 fi
+
+feh --bg-max "$WALLPAPER" -B "#282828" &
