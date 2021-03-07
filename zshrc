@@ -70,7 +70,7 @@ ZSH_THEME="bureau"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    catimg
+    #catimg
     colored-man-pages
     bgnotify
     git-prompt
@@ -78,8 +78,10 @@ plugins=(
     zsh-syntax-highlighting
     zsh-autosuggestions
 #    zsh-vim-mode
+    autoswitch_virtualenv
 )
 
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -108,7 +110,49 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-PS1="[\$?] > "
+#PS1="[\$?] $PS1 "
+
+# Shamelessly stolen from afowler theme
+local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+RPS1='${return_code} $(bureau_git_prompt)'
+
+
+SEP="%{${fg_bold[blue]}%}::%{$reset_color%}"
+
+venv_prompt () {
+    if [ -z $VIRTUAL_ENV ];
+    then
+        echo -n ""
+    fi
+
+    echo -n "$(basename "$VIRTUAL_ENV")"
+}
+
+ranger_prompt () {
+    if [ -n "$RANGER_LEVEL" ];
+    then
+        echo -n "ranger"
+    fi
+
+    echo -n ""
+}
+
+sep () {
+    if [ -n "$RANGER_LEVEL" ] && [ ! -z "$VIRTUAL_ENV" ];
+    then
+        echo -n "$SEP"
+    fi
+
+    if [ ! -n "$RANGER_LEVEL" ] && [ -z "$VIRTUAL_ENV" ];
+    then
+        echo -n " "
+    fi
+
+    echo -n ""
+}
+
+PROMPT='%{${fg_bold[yellow]}%}$(ranger_prompt)%{${reset_color}%}$(sep)%{${fg_bold[magenta]}%}$(venv_prompt)%{${reset_color}%} %{${fg_bold[blue]}%}»%{${reset_color}%} '
+#PS1="$VIRTUAL_ENV::$_USERNAME > "
 
 alias zource="source ~/.zshrc"
 alias zedit="$EDITOR ~/.zshrc"
@@ -121,6 +165,10 @@ export OPAMJOBS=4
 
 # Remote neovim
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
+
+# Postgresql
+export PGDATA="$HOME/postgres_data"
+export PGHOST="/tmp"
 
 # Vim mode config
 MODE_CURSOR_VIINS="blinking bar"

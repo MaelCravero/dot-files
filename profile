@@ -11,3 +11,5 @@ export TERM=xterm-256color
 xset -b
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 source "$HOME/.cargo/env"
+
+eval $(ssh-agent)
