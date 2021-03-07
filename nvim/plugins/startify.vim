@@ -34,7 +34,7 @@ let g:startify_lists = [
 let g:startify_bookmarks = [
             \ {'.': '~/.config/nvim/init.vim'},
             \ {'p': '~/.config/nvim/plugins.vim'},
-            \ {'k': '~/.config/nvim/keys.vim'},
+            \ {'K': '~/.config/nvim/keys.vim'},
             \ {'c': '~/.vimrc'},
             \ {'z': '~/.zshrc'},
             \ {'i': '~/.config/i3/config'},

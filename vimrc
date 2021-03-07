@@ -10,6 +10,8 @@ set nu
 set cc=80
 set signcolumn=yes
 set list listchars=trail:.
+set tw=80
+set nofoldenable
 
 " We do live in the 21st century
 set mouse=a
@@ -82,7 +84,7 @@ nnoremap j gj
 nnoremap k gk
 
 
-" Indentation
+" Language specific settings
 autocmd FileType c,h set autoindent
 autocmd FileType c,h set cindent
 
@@ -92,16 +94,16 @@ autocmd FileType ocaml set softtabstop=2
 au BufNewFile,BufRead,BufEnter *.ll,*.yy,*.tikz set shiftwidth=2
 au BufNewFile,BufRead,BufEnter *.ll,*.yy,*.tikz set softtabstop=2
 
+autocmd FileType rust set cc=99
+
 
 "---PLUGINS---
 call plug#begin('~/.vim/.plugged')
 
 " Looks
 Plug 'morhetz/gruvbox'
-Plug 'lifepillar/vim-solarized8'
 Plug 'ayu-theme/ayu-vim'
-Plug 'AlessandroYorba/Alduin'
-Plug 'tlhr/anderson.vim'
+Plug 'ajmwagar/vim-deus'
 
 " Essential tweaks
 Plug 'tpope/vim-surround'

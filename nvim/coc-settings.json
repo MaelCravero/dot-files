@@ -51,10 +51,10 @@
       "command": "/home/mael/misc/lsp/ada-lsp/ada_language_server",
       "filetypes": ["ada"]
     },
-    "ocaml": {
-      "command": "opam",
-      "args": ["config", "exec", "--", "ocaml-language-server", "--stdio"],
-      "filetypes": ["ocaml", "reason"]
-    }
+   "ocaml": {
+     "command": "ocaml-language-server",
+     "args": ["--stdio"],
+     "filetypes": ["ocaml", "reason"]
+  }
   }
 }

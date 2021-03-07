@@ -16,5 +16,4 @@ let g:rnvimr_action = {
             \ '<C-v>': 'NvimEdit vsplit',
             \ 'gw': 'JumpNvimCwd',
             \ 'yw': 'EmitRangerCwd',
-            \ '<Esc>': 'q',
             \ }

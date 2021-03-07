@@ -13,6 +13,8 @@ set noshowmode
 
 tnoremap <C-W> <C-\><C-n><C-W>
 
+noremap <C-Z> <nop>
+
 set concealcursor="n"
 
 " Set custom filetypes
@@ -45,11 +47,11 @@ source $HOME/.config/nvim/plugins/nerdcommenter.vim
 source $HOME/.config/nvim/plugins/nuake.vim
 source $HOME/.config/nvim/plugins/quickscope.vim
 source $HOME/.config/nvim/plugins/rnvimr.vim
-"source $HOME/.config/nvim/plugins/scrollbar.vim
 source $HOME/.config/nvim/plugins/sendtoterm.vim
 source $HOME/.config/nvim/plugins/sneak.vim
 source $HOME/.config/nvim/plugins/startify.vim
 source $HOME/.config/nvim/plugins/tree.vim
+source $HOME/.config/nvim/plugins/treesitter.vim
 source $HOME/.config/nvim/plugins/vimtex.vim
 source $HOME/.config/nvim/plugins/vista.vim
 source $HOME/.config/nvim/plugins/whichkey.vim

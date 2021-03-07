@@ -14,16 +14,14 @@ Plug 'ryanoasis/vim-devicons'
 
 " Various themes
 Plug 'morhetz/gruvbox'
-Plug 'lifepillar/vim-solarized8'
 Plug 'ayu-theme/ayu-vim'
-Plug 'AlessandroYorba/Alduin'
-Plug 'tlhr/anderson.vim'
+Plug 'ajmwagar/vim-deus'
 
 " Scrollbar
-"Plug 'Xuyuanp/scrollbar.nvim'
+" Plug 'Xuyuanp/scrollbar.nvim'
 
 " Fade windows
-"Plug 'TaDaa/vimade'
+Plug 'TaDaa/vimade'
 
 " --- Essential tweaks
 
@@ -45,6 +43,7 @@ Plug 'chaoren/vim-wordmotion'
 " Move words
 Plug 'AndrewRadev/sideways.vim'
 
+" Better motions
 Plug 'unblevable/quick-scope'
 Plug 'justinmk/vim-sneak'
 
@@ -64,9 +63,6 @@ Plug 'airblade/vim-gitgutter'
 
 " --- Additional features
 
-" Tags are cool yo
-Plug 'ludovicchabant/vim-gutentags'
-
 " Various code snippets
 Plug 'honza/vim-snippets'
 
@@ -85,6 +81,9 @@ Plug 'junegunn/goyo.vim'
 " Delete hidden buffers
 Plug 'Asheq/close-buffers.vim'
 
+" Better quickfix list
+Plug 'kevinhwang91/nvim-bqf'
+
 " --- Edition plugins
 
 " Better tex editing
@@ -100,6 +99,7 @@ Plug 'chrisbra/Colorizer'
 
 " vIM iS NoT aN IDe
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Classy startup-menu
 Plug 'mhinz/vim-startify'
