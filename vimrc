@@ -96,6 +96,8 @@ au BufNewFile,BufRead,BufEnter *.ll,*.yy,*.tikz set softtabstop=2
 
 autocmd FileType rust set cc=99
 
+autocmd VimResized * wincmd =
+
 
 "---PLUGINS---
 call plug#begin('~/.vim/.plugged')

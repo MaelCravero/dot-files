@@ -17,12 +17,6 @@ Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 Plug 'ajmwagar/vim-deus'
 
-" Scrollbar
-" Plug 'Xuyuanp/scrollbar.nvim'
-
-" Fade windows
-Plug 'TaDaa/vimade'
-
 " --- Essential tweaks
 
 " More motions for dealing with brackets, quotes...
@@ -30,9 +24,6 @@ Plug 'tpope/vim-surround'
 
 " Better use of the quickfix list
 Plug 'romainl/vim-qf'
-
-" Adds matching quote/bracket/...
-" Plug 'Townk/vim-autoclose'
 
 " Quick comment/uncomment
 Plug 'preservim/nerdcommenter'
@@ -66,14 +57,12 @@ Plug 'airblade/vim-gitgutter'
 " Various code snippets
 Plug 'honza/vim-snippets'
 
-" Better syntax coloring for many languages
-Plug 'sheerun/vim-polyglot'
-
 " Automatically sets your nvim pwd to your project root
 Plug 'airblade/vim-rooter'
 
 " Display indentation guides - now you can read your 342 lines python function
 Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Vim but more zen
 Plug 'junegunn/goyo.vim'

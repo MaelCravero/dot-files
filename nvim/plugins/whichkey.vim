@@ -19,7 +19,7 @@ let g:which_key_use_floating_win = 0
 " Leader mappings
 let g:which_key_map['c'] = [ '<Plug>NERDCommenterToggle'  , 'comment' ]
 let g:which_key_map['e'] = [ ':call TreeSwitch()'         , 'explorer' ]
-let g:which_key_map['E'] = [ ':LuaTreeToggle'             , 'toggle explorer' ]
+let g:which_key_map['E'] = [ ':NvimTreeToggle'            , 'toggle explorer' ]
 let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'ranger' ]
 let g:which_key_map['s'] = [ ':SSave!'                    , 'save session' ]
 let g:which_key_map['S'] = [ ':Startify'                  , 'start screen' ]

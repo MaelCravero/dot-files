@@ -20,6 +20,6 @@ function TreeSwitch()
     if &filetype == 'LuaTree'
         wincmd l
     else
-        LuaTreeFindFile
+        NvimTreeFindFile
     endif
 endfunction
