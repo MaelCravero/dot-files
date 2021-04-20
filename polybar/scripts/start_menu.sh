@@ -3,7 +3,7 @@
 # Custom Rofi Script
 
 # Launch Rofi
-MENU="$(rofi -no-lazy-grab -sep "|" -dmenu -i -p 'System :' \
+MENU="$(rofi -no-lazy-grab -sep "|" -dmenu -i -p 'System:' \
 -theme gruvbox-menu \
 -hide-scrollbar true \
 -bw 0 \
