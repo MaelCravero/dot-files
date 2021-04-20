@@ -7,7 +7,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 [ "$1" -eq 0 ] && ~/.config/bspwm/startup.sh
 
 # Set random wallpaper as exported variable
-source ~/.config/bspwm/set_wallpaper.sh
+# source ~/.config/bspwm/set_wallpaper.sh
 
 
 ######################
@@ -21,28 +21,31 @@ source ~/.config/bspwm/set_wallpaper.sh
 # Update monitor setup
 ~/.config/bspwm/update_monitors.sh "eDP1" "HDMI1" '1' '2'
 
-# Start polybar
+# Start polybar and tint2
 ~/.config/polybar/launch.sh
 
 # Start tint2
-pkill tint2
-tint2 &
+# pkill tint2
+# tint2 &
 
 # Restart picom
-pkill picom
-picom -b
+pkill picom; picom -b
 
 bspc config focus_follows_pointer true
 
 bspc config border_width         1
 bspc config window_gap          12
 
-bspc config split_ratio          0.52
+bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      false
 
 bspc config focused_border_color '#D79921'
 
 bspc rule -a Gimp desktop='^6' state=floating follow=on
-bspc rule -a brave desktop='^2' follow=on
+bspc rule -a brave-browser desktop='^2' follow=on
 bspc rule -a Chromium desktop='^2' follow=on
+bspc rule -a feh state=floating
+bspc rule -a thunderbird desktop='^1' follow=on
+bpsc rule -a yad state=floating follow=on
+bspc rule -a Ulauncher state=floating manage=on layer=normal follow=on

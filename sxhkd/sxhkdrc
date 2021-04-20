@@ -8,11 +8,16 @@ super + Return
 
 # file explorer
 super + shift + Return
-    $EXPLORER
+    $TERMINAL -e $EXPLORER
 
 # program launcher
+#super + d
+#    rofi -show combi -m -1
 super + d
-    rofi -show combi -m -1
+    ulauncher --hide-window --no-window-shadow &
+
+super + r
+    gmrun
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -37,12 +42,18 @@ Print
 shift + Print
     i3-scrot -w
 
+super + Print
+    i3-scrot -s
+
 #
 # Frequent apps
 #
 
 super + p
     pavucontrol
+
+super + n
+    $TERMINAL -e nvim --listen /tmp/nvimsocket
 
 #
 # bspwm hotkeys
@@ -52,38 +63,29 @@ super + p
 super + twosuperior
     ~/.config/polybar/scripts/start_menu.sh
 
-# exit bspwm
-super + shift + e
-    bspc quit
-
 # quit/restart bspwm
 super + shift + r
     bspc wm -r
 
 # lock bspwm
-super + BackSpace
-    betterlockscreen -l
+#super + BackSpace
+#    betterlockscreen -l
 
 # close and kill
 super + shift + q
     bspc node -c
 
+#xdo raise -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2); \
 # alternate between the tiled and monocle layout
 super + m
-    xdo raise -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2); \
     bspc desktop -l next
-
-# swap the current node and the biggest window
-super + g
-    bspc node -s biggest.window
-
 #
 # state/flags
 #
 
+#xdo raise -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2); \
 # set the window state
 super + {t,shift + t,s}
-    xdo raise -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2); \
     bspc node -t {tiled,pseudo_tiled,floating}
 
 # set fullscreen
@@ -115,10 +117,6 @@ alt + {_,shift + } Tab
 ctrl + alt + {Left,Right}
 	bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
-super + {_, shift + } Tab
-	bspc {node,desktop} -f last
-
 # focus the older or newer node in the focus history
 super + {o,i}
 	bspc wm -h off; \
@@ -128,6 +126,23 @@ super + {o,i}
 # focus or send to the given desktop
 super + {_,shift + }{ampersand,eacute,quotedbl,apostrophe,parenleft,minus}
 	bspc {desktop -f,node -d} '^{1-6}'
+
+#
+# rearrange windows
+#
+
+# rotate the windows
+super + {a, e}
+    bspc node @/ -C {forward, backward}
+
+# cycle through layouts
+# super + Tab
+#     bsp-layout cycle --layouts tall,wide,even; \
+#     notify-send $(bsp-layout get $(bspc query -D -d focused --names))
+
+
+super + shift + Tab
+    ~/.config/bspwm/layout_menu.sh
 
 #
 # move/resize
@@ -144,3 +159,12 @@ super + ctrl + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#
+# eww widgets
+#
+
+# close all widgets
+
+super + ctrl + shift + BackSpace
+    eww close-all
