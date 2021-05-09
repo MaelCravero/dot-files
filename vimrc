@@ -98,23 +98,25 @@ autocmd FileType rust set cc=99
 
 autocmd VimResized * wincmd =
 
-
-"---PLUGINS---
-call plug#begin('~/.vim/.plugged')
-
-" Looks
-Plug 'morhetz/gruvbox'
-Plug 'ayu-theme/ayu-vim'
-Plug 'ajmwagar/vim-deus'
-
-" Essential tweaks
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
-Plug 'romainl/vim-qf'
-Plug 'Townk/vim-autoclose'
-
-call plug#end()
-
 set background=dark
 set termguicolors
-colorscheme gruvbox
+
+if !has('nvim')
+    "---PLUGINS---
+    call plug#begin('~/.vim/.plugged')
+
+    " Looks
+    Plug 'morhetz/gruvbox'
+    Plug 'ayu-theme/ayu-vim'
+    Plug 'ajmwagar/vim-deus'
+
+    " Essential tweaks
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-vinegar'
+    Plug 'romainl/vim-qf'
+    Plug 'Townk/vim-autoclose'
+
+    call plug#end()
+
+    colorscheme gruvbox
+endif
