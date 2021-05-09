@@ -26,6 +26,7 @@ configs="\
     tint2\
     bspwm\
     sxhkd\
+    kitty\
     "
 
 # Home dot files
