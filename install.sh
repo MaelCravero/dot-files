@@ -20,7 +20,6 @@ configs="\
     rofi\
     i3\
     dunst\
-    alacritty\
     picom\
     polybar\
     tint2\
