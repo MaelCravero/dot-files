@@ -7,6 +7,8 @@
 INTERNAL_MONITOR="$1"
 EXTERNAL_MONITOR="$2"
 
+MODE="$3"
+
 shift 2
 
 monitor_add() {
@@ -30,10 +32,42 @@ monitor_remove() {
     notify-send "single screen"
 }
 
-if xrandr | grep -o "$EXTERNAL_MONITOR connected" > /dev/null; then
-    monitor_add $@
-else
-    monitor_remove $@
-fi
+monitor_external() {
+    ~/.screenlayout/external.sh
+    bspc monitor "$EXTERNAL_MONITOR" -d $@ > /dev/null
+    for i in $@; do
+        echo $i
+        bspc desktop "$i" -m "$EXTERNAL_MONITOR"
+    done
+    bspc monitor "$INTERNAL_MONITOR" --remove > /dev/null
+    notify-send "external screen"
+}
 
-feh --bg-max "$WALLPAPER" -B "#282828" &
+monitor_internal() {
+    ~/.screenlayout/single.sh
+    bspc monitor "$INTERNAL_MONITOR" -d $@ > /dev/null
+    for i in $@; do
+        echo $i
+        bspc desktop "$i" -m "$INTERNAL_MONITOR"
+    done
+    bspc monitor "$EXTERNAL_MONITOR" --remove > /dev/null
+    notify-send "internal screen"
+}
+
+case "$MODE" in
+    single)   monitor_remove $@;;
+    dual)     monitor_add $@;;
+    external) monitor_external '1' '2' '3' '4' '5' '6';;
+    internal) monitor_internal '1' '2' '3' '4' '5' '6';;
+    *)
+        if xrandr | grep -o "$EXTERNAL_MONITOR connected" > /dev/null; then
+            monitor_add $@
+        else
+            monitor_remove $@
+        fi
+        ;;
+esac
+
+#feh --bg-max "$WALLPAPER" -B "#282828" &
+pkill nitrogen
+nitrogen --restore &

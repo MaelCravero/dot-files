@@ -19,7 +19,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 [ "$1" -eq 0 ] && bspc monitor -d '1' '2' '3' '4' '5' '6'
 
 # Update monitor setup
-~/.config/bspwm/update_monitors.sh "eDP1" "HDMI1" '1' '2'
+~/.config/bspwm/update_monitors.sh "eDP1" "HDMI1" '' '1' '2'
 
 # Start polybar and tint2
 ~/.config/polybar/launch.sh
@@ -34,7 +34,7 @@ pkill picom; picom -b
 bspc config focus_follows_pointer true
 
 bspc config border_width         1
-bspc config window_gap          12
+bspc config window_gap          6
 
 bspc config split_ratio          0.50
 bspc config borderless_monocle   true
@@ -49,3 +49,5 @@ bspc rule -a feh state=floating
 bspc rule -a thunderbird desktop='^1' follow=on
 bpsc rule -a yad state=floating follow=on
 bspc rule -a Ulauncher state=floating manage=on layer=normal follow=on
+bsps rule -a Calculator state=floating
+bsps rule -a Gnome-calculator state=floating

@@ -144,6 +144,9 @@ super + {a, e}
 super + shift + Tab
     ~/.config/bspwm/layout_menu.sh
 
+super + ctrl + Tab
+    ~/.config/bspwm/screen_menu.sh
+
 #
 # move/resize
 #
