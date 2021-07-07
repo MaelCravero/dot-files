@@ -7,3 +7,29 @@
 	excludefiles = /home/mael/.gitignore
 [commit]
 	verbose = true
+[alias]
+	branche = branch
+	atome = commit
+	change = switch
+	controle = checkout
+	reinit = reset
+	rapporte = fetch
+	ajoute = add
+	cachette = stash
+	journal = log
+	montre = show
+	picore = cherry-pick
+	journalet = shortlog
+	etiquette = tag
+	supr = rm
+	dpl = mv
+	pousse = push
+	tire = pull
+	inverse = revert
+	dichotomie = bisect
+	statut = status
+	distant = remote
+	branch = help
+	fusionne = merge
+	hisse = pull
+	cueille-cerise = cherry-pick

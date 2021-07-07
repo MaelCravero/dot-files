@@ -37,9 +37,6 @@ doc-comments=before
 
 dock-collection-brackets=true
 
-escape-chars=preserve
-escape-strings=preserve
-
 exp-grouping=preserve
 
 extension-indent=2
@@ -64,12 +61,11 @@ let-and=compact
 let-binding-indent=2
 let-binding-spacing=double-semicolon
 let-module=compact
-let-open=preserve
 
 match-indent-nested=never
 match-indent=0
 
-module-item-spacing=sparse
+module-item-spacing=compact
 
 nested-match=wrap
 

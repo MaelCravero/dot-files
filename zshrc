@@ -69,15 +69,15 @@ ZSH_THEME="bureau"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
-    #catimg
+    gitfast
+    # catimg
     colored-man-pages
     bgnotify
     git-prompt
     fzf
     zsh-syntax-highlighting
     zsh-autosuggestions
-#    zsh-vim-mode
+    # zsh-vim-mode
     autoswitch_virtualenv
 )
 
@@ -109,6 +109,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
 #PS1="[\$?] $PS1 "
 
@@ -160,6 +162,8 @@ alias gdb="gdb -q"
 
 alias pyvenv="python -m venv env"
 
+source ~/.dot-files/commandes_francophonie.sh
+
 export MAKEFLAGS=-j4
 export OPAMJOBS=4
 
@@ -197,3 +201,5 @@ fpath+=~/.zfunc
 test -r /home/mael/.opam/opam-init/init.zsh && . /home/mael/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval $(thefuck --alias)
