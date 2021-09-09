@@ -115,6 +115,7 @@ if !has('nvim')
     Plug 'tpope/vim-vinegar'
     Plug 'romainl/vim-qf'
     Plug 'Townk/vim-autoclose'
+    Plug 'sheerun/vim-polyglot'
 
     call plug#end()
 
