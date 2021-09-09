@@ -53,16 +53,17 @@ ZSH_CUSTOM=~/.oh-my-zsh/custom/plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM"/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_CUSTOM"/zsh-syntax-highlighting
 git clone https://github.com/softmoth/zsh-vim-mode.git "$ZSH_CUSTOM"/zsh-vim-mode
+git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" "$ZSH_CUSTOM/plugins/autoswitch_virtualenv"
 
 # Konsole profiles and colorschemes
-KONSOLE_CONFIG_DIR="konsole-config"
-KONSOLE_LOCAL_DIR="$HOME/.local/share/konsole"
-mkdir -p $KONSOLE_LOCAL_DIR
-
-KONSOLE_NB_THEMES="$(ls $KONSOLE_CONFIG_DIR | wc -l)"
-i=1
-echo "Konsole config..."
-for elt in $(ls $KONSOLE_CONFIG_DIR); do
-    echo -n "    $i/$KONSOLE_NB_THEMES - $elt... " && ln -s $PWD/$KONSOLE_CONFIG_DIR/$elt $KONSOLE_LOCAL_DIR/$elt && echo "OK"
-done
-echo "Konsole config done"
+# KONSOLE_CONFIG_DIR="konsole-config"
+# KONSOLE_LOCAL_DIR="$HOME/.local/share/konsole"
+# mkdir -p $KONSOLE_LOCAL_DIR
+# 
+# KONSOLE_NB_THEMES="$(ls $KONSOLE_CONFIG_DIR | wc -l)"
+# i=1
+# echo "Konsole config..."
+# for elt in $(ls $KONSOLE_CONFIG_DIR); do
+#     echo -n "    $i/$KONSOLE_NB_THEMES - $elt... " && ln -s $PWD/$KONSOLE_CONFIG_DIR/$elt $KONSOLE_LOCAL_DIR/$elt && echo "OK"
+# done
+# echo "Konsole config done"
