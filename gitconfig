@@ -8,6 +8,8 @@
 [commit]
 	verbose = true
 [alias]
+	amend = commit --amend
+	continue = rebase --continue
 	branche = branch
 	atome = commit
 	change = switch
