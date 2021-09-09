@@ -202,4 +202,4 @@ test -r /home/mael/.opam/opam-init/init.zsh && . /home/mael/.opam/opam-init/init
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
