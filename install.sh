@@ -17,6 +17,7 @@ dots="\
 
 configs="\
     nvim\
+    lvim\
     rofi\
     i3\
     dunst\
