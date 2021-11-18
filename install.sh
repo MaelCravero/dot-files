@@ -7,7 +7,6 @@ dots="\
     profile\
     zshrc\
     vimrc\
-    i3status.conf\
     clang-format\
     ocamlinit\
     ocamlformat\
@@ -18,14 +17,6 @@ dots="\
 configs="\
     nvim\
     lvim\
-    rofi\
-    i3\
-    dunst\
-    picom\
-    polybar\
-    tint2\
-    bspwm\
-    sxhkd\
     kitty\
     "
 
