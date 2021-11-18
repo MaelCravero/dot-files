@@ -1,142 +1,52 @@
---[[
-lvim is the global options object
-
-Linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
-]] -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
--- general
-lvim.log.level = "warn"
-lvim.format_on_save = true
-lvim.background = "dark"
-lvim.colorscheme = "gruvbox"
-lvim.builtin.treesitter.indent = false
-lvim.builtin.gitsigns.opts["current_line_blame"] = true
-
+-- Custom config for lunarvim https://lunarvim.org
+-- Default config here https://github.com/LunarVim/LunarVim/blob/rolling/utils/installer/config.example.lua
+--
+----------------------------------------------------------------------
+--                       General Vim Settings                       --
+----------------------------------------------------------------------
 vim.o.listchars = "trail:."
 vim.o.wrap = true
 vim.o.list = true
 vim.o.colorcolumn = "80"
+vim.o.textwidth = 80
 
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 
-vim.cmd("map Y yy")
-vim.cmd("unmap Y")
+----------------------------------------------------------------------
+--                          Lvim Settings                           --
+----------------------------------------------------------------------
 
--- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
--- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
--- local _, actions = pcall(require, "telescope.actions")
-lvim.builtin.telescope.defaults.mappings = {
-    -- for input mode
-    i = {
-        ["<C-t>"] = require"trouble.providers.telescope".open_with_trouble
-    },
-    -- for normal mode
-    n = {
-        ["<C-t>"] = require"trouble.providers.telescope".open_with_trouble
-    }
-}
+lvim.log.level = "warn"
+lvim.background = "dark"
+lvim.colorscheme = "gruvbox"
+lvim.format_on_save = true
 
--- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["t"] = {"<cmd>TroubleToggle<cr>", "Trouble"}
-lvim.builtin.which_key.mappings["s"] = {"<cmd>SymbolsOutline<cr>", "Symbols"}
-lvim.builtin.which_key.mappings["T"] = {
-    name = "+Trouble",
-    r = {"<cmd>Trouble lsp_references<cr>", "References"},
-    f = {"<cmd>Trouble lsp_definitions<cr>", "Definitions"},
-    d = {"<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnostics"},
-    q = {"<cmd>Trouble quickfix<cr>", "QuickFix"},
-    l = {"<cmd>Trouble loclist<cr>", "LocationList"},
-    t = {"<cmd>TroubleToggle<cr>", "Toggle"}
-}
-lvim.builtin.which_key.vmappings["c"] = {
-    "<ESC><CMD>lua ___comment_gc(vim.fn.visualmode())<CR>",
-    "Comment"
-}
-lvim.builtin.which_key.mappings["c"] = {
-    "<cmd>lua require('Comment').toggle()<CR>",
-    "Comment"
-}
-lvim.builtin.which_key.mappings["q"] = {"<cmd>BufferClose!<CR>", "Close Buffer"}
+lvim.builtin.treesitter.indent = false
+lvim.builtin.treesitter.highlight.enabled = true
 
--- TODO: User Config for predefined plugins
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
+lvim.builtin.gitsigns.opts["current_line_blame"] = true
+
 lvim.builtin.dashboard.active = true
-lvim.builtin.terminal.active = true
+
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 
--- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {
-    "bash",
-    "c",
-    "cpp",
-    "json",
-    "lua",
-    "python",
-    "rust",
-    "ocaml",
-    "ocaml_interface",
-    "yaml"
-}
+lvim.builtin.terminal.active = true
+lvim.builtin.terminal.direction = "horizontal"
+lvim.builtin.terminal.size = 16
 
--- lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enabled = true
+----------------------------------------------------------------------
+--                          Config modules                          --
+----------------------------------------------------------------------
+require("keys")
+require("lang")
+require("commands")
 
--- generic LSP settings
--- you can set a custom on_attach function that will be used for all the language servers
--- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
--- lvim.lsp.on_attach_callback = function(client, bufnr)
---   local function buf_set_option(...)
---     vim.api.nvim_buf_set_option(bufnr, ...)
---   end
---   --Enable completion triggered by <c-x><c-o>
---   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
--- end
--- you can overwrite the null_ls setup table (useful for setting the root_dir function)
--- lvim.lsp.null_ls.setup = {
---   root_dir = require("lspconfig").util.root_pattern("Makefile", ".git", "node_modules"),
--- }
--- or if you need something more advanced
--- lvim.lsp.null_ls.setup.root_dir = function(fname)
---   if vim.bo.filetype == "javascript" then
---     return require("lspconfig/util").root_pattern("Makefile", ".git", "node_modules")(fname)
---       or require("lspconfig/util").path.dirname(fname)
---   elseif vim.bo.filetype == "php" then
---     return require("lspconfig/util").root_pattern("Makefile", ".git", "composer.json")(fname) or vim.fn.getcwd()
---   else
---     return require("lspconfig/util").root_pattern("Makefile", ".git")(fname) or require("lspconfig/util").path.dirname(fname)
---   end
--- end
-
--- set a formatter if you want to override the default lsp one (if it exists)
--- lvim.lang.python.formatters = {
---   {
---     exe = "black",
---   }
--- }
--- set an additional linter
--- lvim.lang.python.linters = {
---   {
---     exe = "flake8",
---   }
--- }
-
-lvim.lang.lua.formatters = {
-    {
-        exe = "lua-format",
-        args = {"--chop-down-table"}
-    }
-}
-
--- lvim.lang.ocaml.lsp.provider = "ocamlls"
-
--- Additional Plugins
+----------------------------------------------------------------------
+--                        Additional Plugins                        --
+----------------------------------------------------------------------
 lvim.plugins = {
-    {"folke/tokyonight.nvim"},
     {"folke/trouble.nvim"},
     {'luukvbaal/stabilize.nvim'},
     {'tpope/vim-surround'},
@@ -209,15 +119,38 @@ lvim.plugins = {
         augroup END
         ]]
         end
+    },
+    {
+        "s1n7ax/nvim-comment-frame",
+        config = function()
+            require('nvim-comment-frame').setup({
+                disable_default_keymap = true
+            })
+        end
+    },
+    {
+        "kosayoda/nvim-lightbulb",
+        config = function()
+            require'nvim-lightbulb'.update_lightbulb {
+                sign = {
+                    enabled = true,
+                    text = ""
+                },
+                float = {
+                    enabled = false
+                },
+                virtual_text = {
+                    enabled = true,
+                    -- Text to show at virtual text
+                    text = "",
+                    -- highlight mode to use for virtual text (replace, combine, blend), see :help nvim_buf_set_extmark() for reference
+                    hl_mode = "combine"
+                },
+                status_text = {
+                    enabled = false
+                }
+            }
+            vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+        end
     }
-}
-
-lvim.builtin.terminal.direction = "horizontal"
-lvim.builtin.terminal.size = 16
-
--- Autocommands (https://neovim.io/doc/user/autocmd.html)
-lvim.autocommands.custom_groups = {
-    -- {"BufWinEnter", "*.cc", "setlocal ts=4 sw=4"},
-    -- {"FileType", "cpp", "setlocal ts=4 sw=4"}
-    {"BufWritePost", "*", "TroubleRefresh"}
 }
