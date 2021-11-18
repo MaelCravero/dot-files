@@ -4,6 +4,7 @@ set nocp
 syntax on
 set bs=indent,eol,start
 set hidden
+set mouse=a
 
 " Basic display settings
 set nu
@@ -12,9 +13,6 @@ set signcolumn=yes
 set list listchars=trail:.
 set tw=80
 set nofoldenable
-
-" We do live in the 21st century
-set mouse=a
 
 " Always keep some space around the cursor on the screen's edge
 set so=5
@@ -28,14 +26,6 @@ set softtabstop=4
 set splitright
 set splitbelow
 set swb=usetab,split
-
-
-" Leader
-nnoremap <C-n> ;
-nnoremap <C-p> ,
-let mapleader = ";"
-let maplocalleader = ","
-
 
 " Completion pop-up fix
 highlight Pmenu ctermbg=LightGrey guibg=LightGrey
@@ -54,9 +44,9 @@ set completeopt=longest,menuone
 
 " Mappings
 "map <silent> <C-m> :make <CR><CR>
-"map <C-n> :cn <CR>
-"map <C-b> :cp <CR>
-map <C-f> <C-]>
+map <C-n> :cn <CR>
+map <C-p> :cp <CR>
+map <C-q> <C-]>
 
 " Arrow mappings
 nnoremap <C-h> <C-w>h
@@ -91,8 +81,8 @@ autocmd FileType c,h set cindent
 autocmd FileType ocaml set shiftwidth=2
 autocmd FileType ocaml set softtabstop=2
 
-au BufNewFile,BufRead,BufEnter *.ll,*.yy,*.tikz set shiftwidth=2
-au BufNewFile,BufRead,BufEnter *.ll,*.yy,*.tikz set softtabstop=2
+" au BufNewFile,BufRead,BufEnter *.ll,*.yy,*.tikz set shiftwidth=2
+" au BufNewFile,BufRead,BufEnter *.ll,*.yy,*.tikz set softtabstop=2
 
 autocmd FileType rust set cc=99
 
@@ -107,17 +97,20 @@ if !has('nvim')
 
     " Looks
     Plug 'morhetz/gruvbox'
-    Plug 'ayu-theme/ayu-vim'
-    Plug 'ajmwagar/vim-deus'
 
     " Essential tweaks
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-vinegar'
+    Plug 'tpope/vim-fugitive'
     Plug 'romainl/vim-qf'
     Plug 'Townk/vim-autoclose'
-    Plug 'sheerun/vim-polyglot'
+    Plug 'ervandew/supertab'
+    Plug 'ludovicchabant/vim-gutentags'
 
     call plug#end()
 
     colorscheme gruvbox
 endif
+
+" Context-aware tab completion
+let g:SuperTabDefaultCompletionType = "context"
