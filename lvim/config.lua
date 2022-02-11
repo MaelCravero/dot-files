@@ -29,12 +29,16 @@ lvim.builtin.gitsigns.opts["current_line_blame"] = true
 
 lvim.builtin.dashboard.active = true
 
+lvim.builtin.notify.active = true
+
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 
 lvim.builtin.terminal.active = true
 lvim.builtin.terminal.direction = "horizontal"
 lvim.builtin.terminal.size = 16
+
+lvim.builtin.project.ignore_lsp = { "ocamlls" }
 
 ----------------------------------------------------------------------
 --                          Config modules                          --
@@ -106,16 +110,20 @@ lvim.plugins = {
                 stdin = 1,
                 args = {
                     "--enable-outside-detected-project",
-                    "--format-invalid-files=auto",
                     "--name",
                     '"%:p"',
                     "-"
                 }
             }
+            vim.g.neoformat_glsl = {
+                exe = "clang-format",
+                no_append = 1,
+                stdin = 1
+            }
             vim.cmd [[
         augroup fmt
             autocmd!
-            au BufWritePre *.ml,*.mli Neoformat
+            au BufWritePre *.ml,*.mli,*.glsl Neoformat
         augroup END
         ]]
         end
@@ -152,5 +160,7 @@ lvim.plugins = {
             }
             vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
         end
-    }
+    },
+    'tikhomirov/vim-glsl',
+    'AndrewRadev/sideways.vim'
 }

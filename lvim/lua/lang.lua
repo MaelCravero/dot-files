@@ -20,12 +20,21 @@ lvim.builtin.treesitter.ensure_installed = {
 ----------------------------------------------------------------------
 --                            Formatters                            --
 ----------------------------------------------------------------------
-lvim.lang.lua.formatters = {
-    {
-        exe = "lua-format",
-        args = {"--chop-down-table"}
-    }
-}
+-- lvim.lang.lua.formatters = {
+--     {
+--         exe = "lua-format",
+--         args = {"--chop-down-table"}
+--     }
+-- }
+
+vim.cmd [[
+let g:neoformat_ocaml_ocamlformat = {
+            \ 'exe': 'ocamlformat',
+            \ 'no_append': 1,
+            \ 'stdin': 1,
+            \ 'args': ['--enable-outside-detected-project', '--name', '"%:p"', '-']
+            \ }
+]]
 
 ----------------------------------------------------------------------
 --                               LSP                                --

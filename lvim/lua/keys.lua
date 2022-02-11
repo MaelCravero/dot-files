@@ -5,6 +5,13 @@ lvim.keys.normal_mode["Y"] = "yy" -- default Y behavior
 lvim.keys.normal_mode["gt"] = ":BufferPick<CR>" -- default Y behavior
 lvim.keys.normal_mode["<Tab>"] = ":BufferNext<CR>"
 lvim.keys.normal_mode["<S-Tab>"] = ":BufferPrevious<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":SidewaysLeft<CR>"
+lvim.keys.normal_mode["<S-l>"] = ":SidewaysRight<CR>"
+
+vim.cmd [[omap ix <Plug>SidewaysArgumentTextobjA]]
+vim.cmd [[xmap ix <Plug>SidewaysArgumentTextobjA]]
+vim.cmd [[omap ia <Plug>SidewaysArgumentTextobjI]]
+vim.cmd [[xmap ia <Plug>SidewaysArgumentTextobjI]]
 
 ----------------------------------------------------------------------
 --                            Telescope                             --
@@ -18,14 +25,14 @@ lvim.builtin.telescope.defaults.mappings = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-n>"] = actions.cycle_history_next,
-        ["<C-p>"] = actions.cycle_history_prev,
-        ["<C-t>"] = require"trouble.providers.telescope".open_with_trouble
+        ["<C-p>"] = actions.cycle_history_prev
+        -- ["<C-t>"] = require"trouble.providers.telescope".open_with_trouble
     },
     -- for normal mode
     n = {
         ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<C-t>"] = require"trouble.providers.telescope".open_with_trouble
+        ["<C-k>"] = actions.move_selection_previous
+        -- ["<C-t>"] = require"trouble.providers.telescope".open_with_trouble
     }
 }
 
@@ -42,11 +49,13 @@ wkmap["/"] = nil
 wkmap["w"] = nil
 
 lvim.builtin.which_key.vmappings["c"] = {
-    "<ESC><CMD>lua ___comment_gc(vim.fn.visualmode())<CR>",
+    "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>",
     "Comment"
 }
 
-wkmap["c"] = {"<cmd>lua require('Comment').toggle()<CR>", "Comment"}
+wkmap["c"] = {
+    "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment"
+}
 wkmap["C"] = {
     "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<CR>",
     "Comment frame"
