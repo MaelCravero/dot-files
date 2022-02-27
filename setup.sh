@@ -6,6 +6,7 @@
 
 DOTS=dots
 CONFIG=config
+KEYBOARDS=keyboards
 
 print_usage() {
     echo "Usage: $0 [COMMAND] [SUBCOMMANDS]"
@@ -16,6 +17,7 @@ print_usage() {
     echo "   vim:       setup vim"
     echo "   lvim:      setup lunarvim"
     echo "   omz:       setup oh-my-zsh"
+    echo "   qmk:       setup qmk keyboards"
     echo "   clean:     undo install"
     echo "   help:      display this message and exit"
 }
@@ -171,6 +173,47 @@ setup_omz() {
 }
 
 #--------------------------------------------------------------------#
+#                                QMK                                 #
+#--------------------------------------------------------------------#
+
+qmk_usage() {
+    echo "QMK subcommands:"
+    echo "   init:       initialize qmk local repository"
+    echo "   gergoplex:  build and flash gergoplex"
+    echo "   help:       display this message"
+}
+
+qmk() {
+    QMK="$KEYBOARDS/qmk"
+    if [ $# -eq 0 ]; then
+        qmk_usage
+    else
+        for arg; do
+            case $arg in
+            init)
+                git submodule init $QMK
+                git submodule update $QMK
+                ln -sT "$PWD/$KEYBOARDS/gergoplex" \
+                    "$QMK/keyboards/gboards/k/gergoplex/keymaps/mael"
+                make -C $QMK git-submodule
+                ;;
+            gergoplex)
+                CFLAGS="" make -C $QMK "gboards/k/gergoplex:mael:dfu"
+                ;;
+            help)
+                qmk_usage
+                ;;
+            *)
+                echo "unrecognized qmk subcommand $arg"
+                qmk_usage
+                exit 1
+                ;;
+            esac
+        done
+    fi
+}
+
+#--------------------------------------------------------------------#
 #                                Main                                #
 #--------------------------------------------------------------------#
 
@@ -200,7 +243,7 @@ clean() {
                 clean_config $CONFIG
                 ;;
             *)
-                echo "unrecognized clean option $arg"
+                echo "unrecognized clean subcommand $arg"
                 exit 1
                 ;;
             esac
@@ -215,32 +258,28 @@ case $MODE in
 all)
     setup_all
     ;;
-
 dots)
     link_dots $DOTS
     ;;
-
 config)
     link_config $CONFIG
     ;;
-
 vim)
     setup_vim
     ;;
-
 lvim)
     setup_lvim
     ;;
-
 omz)
     setup_omz
     ;;
-
+qmk)
+    qmk $@
+    ;;
 clean)
     clean $@
     echo "Cleaned files backuped to $BACKUP"
     ;;
-
 help)
     print_usage
     ;;
