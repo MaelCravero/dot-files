@@ -1,3 +1,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = git@github.com:MaelCravero/nvim.git
+[submodule "keyboards/qmk"]
+	path = keyboards/qmk
+	url = git@github.com:germ/qmk_firmware.git
