@@ -1,6 +1,30 @@
 #!/bin/dash
 
 #--------------------------------------------------------------------#
+#                          Setup variables                           #
+#--------------------------------------------------------------------#
+
+DOTS=dots
+CONFIG=config
+
+print_usage() {
+    echo "Usage: $0 [COMMAND] [SUBCOMMANDS]"
+    echo "Commands:"
+    echo "   all:       setup everything"
+    echo "   dots:      link dot-files"
+    echo "   config:    link .config files"
+    echo "   vim:       setup vim"
+    echo "   lvim:      setup lunarvim"
+    echo "   omz:       setup oh-my-zsh"
+    echo "   clean:     undo install"
+    echo "   help:      display this message and exit"
+}
+
+[ $# -lt 1 ] && print_usage && exit 1
+
+[ $1 = "clean" ] && BACKUP=$(mktemp -d)
+
+#--------------------------------------------------------------------#
 #                          Pretty-printing                           #
 #--------------------------------------------------------------------#
 
@@ -24,29 +48,12 @@ print_category() {
     echo "${CYAN}>> $1${COLOR_OFF}"
 }
 
-print_usage() {
-    echo "Usage: $0 [COMMAND] [SUBCOMMANDS]"
-    echo "Commands:"
-    echo "   all:       setup everything"
-    echo "   dots:      link dot-files"
-    echo "   config:    link .config files"
-    echo "   clean:     undo install"
-    echo "   help:      display this message and exit"
-    echo "Default is 'all'."
-
+print_unimplemented() {
+    echo "${YELLOW}TBD${COLOR_OFF}"
 }
 
 #--------------------------------------------------------------------#
-#                          Setup variables                           #
-#--------------------------------------------------------------------#
-
-DOTS=dots
-CONFIG=config
-
-[ $1 = "clean" ] && BACKUP=$(mktemp -d)
-
-#--------------------------------------------------------------------#
-#                             Installer                              #
+#                             Dot files                              #
 #--------------------------------------------------------------------#
 
 link_dots() {
@@ -58,30 +65,6 @@ link_dots() {
     for file in $(ls "$DIR"); do
         SRC="$DIR/$file"
         DST="$HOME/.$file"
-
-        if [ -e "$DST" ]; then
-            echo "$KO $DST already exists, could not symlink"
-            SUCCESS=false
-        else
-            printf "$OK Linking $file... "
-            ln -s "$SRC" "$DST" && echo "done"
-        fi
-    done
-
-    if ! $SUCCESS; then
-        echo "Some links where not processed. Use \`$0 clean\` to remove then."
-    fi
-}
-
-link_config() {
-    print_category "CONFIG FILES"
-
-    DIR="$PWD/$1"
-    SUCCESS=true
-
-    for file in $(ls "$DIR"); do
-        SRC="$DIR/$file"
-        DST="$HOME/.config/$file"
 
         if [ -e "$DST" ]; then
             echo "$KO $DST already exists, could not symlink"
@@ -111,6 +94,34 @@ clean_dots() {
     done
 }
 
+#--------------------------------------------------------------------#
+#                               Config                               #
+#--------------------------------------------------------------------#
+
+link_config() {
+    print_category "CONFIG FILES"
+
+    DIR="$PWD/$1"
+    SUCCESS=true
+
+    for file in $(ls "$DIR"); do
+        SRC="$DIR/$file"
+        DST="$HOME/.config/$file"
+
+        if [ -e "$DST" ]; then
+            echo "$KO $DST already exists, could not symlink"
+            SUCCESS=false
+        else
+            printf "$OK Linking $file... "
+            ln -sT "$SRC" "$DST" && echo "done"
+        fi
+    done
+
+    if ! $SUCCESS; then
+        echo "Some links where not processed. Use \`$0 clean\` to remove then."
+    fi
+}
+
 clean_config() {
     print_category "CONFIG"
 
@@ -125,9 +136,50 @@ clean_config() {
     done
 }
 
+#--------------------------------------------------------------------#
+#                            Vim/LunarVim                            #
+#--------------------------------------------------------------------#
+
+setup_vim() {
+    print_category "VIM"
+
+    echo -n "downloading vim-plug... "
+    curl -fLso ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim &&
+        echo "$OK" || echo "$KO"
+}
+
+setup_lvim() {
+    print_category "LVIM"
+
+    sh -c "bash <(curl -s
+    https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)"
+}
+
+#--------------------------------------------------------------------#
+#                             Oh my zsh                              #
+#--------------------------------------------------------------------#
+
+setup_omz() {
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    ZSH_CUSTOM=$HOME/.oh-my-zsh/custom/plugins
+    git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM"/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_CUSTOM"/zsh-syntax-highlighting
+    git clone https://github.com/softmoth/zsh-vim-mode.git "$ZSH_CUSTOM"/zsh-vim-mode
+    git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" "$ZSH_CUSTOM/plugins/autoswitch_virtualenv"
+}
+
+#--------------------------------------------------------------------#
+#                                Main                                #
+#--------------------------------------------------------------------#
+
 setup_all() {
     link_dots $DOTS
     link_config $CONFIG
+    setup_vim
+    setup_lvim
+    setup_omz
 }
 
 clean_all() {
@@ -156,13 +208,8 @@ clean() {
     fi
 }
 
-#--------------------------------------------------------------------#
-#                                Main                                #
-#--------------------------------------------------------------------#
-
-MODE=${1:-all} # Mode is the first argument or "all" if no arg is given
-
-[ $# -ge 1 ] && shift
+MODE="$1"
+shift
 
 case $MODE in
 all)
@@ -177,6 +224,18 @@ config)
     link_config $CONFIG
     ;;
 
+vim)
+    setup_vim
+    ;;
+
+lvim)
+    setup_lvim
+    ;;
+
+omz)
+    setup_omz
+    ;;
+
 clean)
     clean $@
     echo "Cleaned files backuped to $BACKUP"
@@ -188,5 +247,6 @@ help)
 *)
     echo "unrecognized command $MODE"
     print_usage
+    exit 1
     ;;
 esac
