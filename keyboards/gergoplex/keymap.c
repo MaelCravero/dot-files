@@ -20,9 +20,8 @@
 
 #define BASE 0 // default layer
 #define SYMB 1 // symbols
-#define DIAC 4 // diacritics
-#define FNCT 2 // functions/motion (FUNC is already taken)
-#define NAV 3 // navigation
+#define DIAC 2 // diacritics
+#define FNCT 3 // functions/motion (FUNC is already taken)
 
 #include QMK_KEYBOARD_H
 #include "g/keymap_combo.h"
@@ -59,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |     W|  X  |  C  |  V  |  B  |      |  N  | , ? | ; . | : / |      ! |
      * `------+-----+-----+------+----'      `--------------------------------'
      *  .-------------------------.           .-----------------.
-     *  |  META  | ' /ALT|SPC(SYM)|           |ENT(NUM)|NAV|DIA|
+     *  |  META  | ' /ALT|   SPC  |           |ENT(NAV)|BSP|META|
      *  '-------------------------'           '-----------------'
      */
 
@@ -69,7 +68,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             FR_W, FR_X, FR_C, FR_V, FR_B, /*  */ FR_N, FR_COMM, FR_SCLN, FR_COLN, FR_EXLM,
 
             KC_LGUI,            MT(MOD_LALT, FR_QUOT), KC_SPC, // Left
-            //LT(SYMB, KC_ENT), LT(NUMB, KC_BSPC),     MO(NAV) // Right
             LT(FNCT, KC_ENTER), KC_BSPC,               KC_RGUI // Right
     ),
 
@@ -106,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_TRNS, KC_TRNS, KC_TRNS  // Right
             ),
 
-    /* Keymap 4: Diacritics/numpad layer
+    /* Keymap 2: Diacritics/numpad layer
      * ,-----------------------------.       ,------------------------------.
      * |  à   |  é  |  è  |  ù  |  n  |      |  +  |  1  |  2  |  3  |  *   |
      * |-----+-----+-----+-----+------|      |--.---------------------------|
@@ -127,46 +125,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             _______, _______, _______  // Right
             ),
 
-    /* Keymap 2: Function layer
-     * ,-----------------------------.       ,------------------------------.
-     * |  à   |  é  |  è  |  ù  |  n  |      | MUTE| VDWN| VUP | BDWN| BUP  |
-     * |-----+-----+-----+-----+------|      |------------------------------|
-     * |      |     |     |  ^  |  ¨  |      | LFT | DWN | UP  | RGT | PGUP |
-     * |-----+-----+-----+-----+------+      |------------------------------|
-     * |  ^   |  ¨  |  ç  |  ^  |  ¨  |      | MLFT| MDWN| MUP | MRGT| PGDN |
-     * `------+-----+-----+------+----'      `------------------------------'
+    /* Keymap 3: Navigation layer
+     * ,-----------------------------.       ,-------------------------------.
+     * |  F1  | F2  | F3  | F4  |  F5 |      | MUTE| VDWN| VUP | BDWN| BUP   |
+     * |-----+-----+-----+-----+------|      |-------------------------------|
+     * |  F6  | F7  | F8  | F9  | F10 |      | LFT | DWN | UP  | RGT | VOLUP |
+     * |-----+-----+-----+-----+------+      |-------------------------------|
+     * |  F11 | F12 |     |     |     |      |MLFT | MDWN| MUP | MRGT| VOLDN |
+     * `------+-----+-----+------+----'      `-------------------------------'
      *          .-----------------.           .-----------------.
-     *          | M3  | M2 | M1   |           |     |     |     |
+     *          | M3  | M2 |  M1  |           |     |     |     |
      *          '-----------------'           '-----------------'
      */
     [FNCT] = LAYOUT_gergoplex(
-            FR_AGRV, FR_EACU, FR_EGRV, FR_UGRV, UC_NTLD, /*  */ KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU,
-            XXXXXXX, XXXXXXX, XXXXXXX, FR_CIRC, FR_DIAE, /*  */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PGUP,
-            FR_CIRC, FR_DIAE, FR_CCED, FR_CIRC, FR_DIAE, /*  */ KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_PGDOWN,
+            KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,   /*  */ KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU,
+            KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  /*  */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_VOLU,
+            KC_F11,  KC_F12,  XXXXXXX, XXXXXXX,  XXXXXXX, /*  */ KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_VOLD,
 
-            KC_BTN3, KC_BTN2, KC_BTN1, // Left
-            KC_TRNS, KC_TRNS, KC_TRNS  // Right
-            ),
-
-    /* Keymap 3: Navigation layer
-     * ,-----------------------------.       ,-------------------------------.
-     * |      |     |     |     |     |      | MUTE| VDWN| VUP | BDWN| BUP  |
-     * |-----+-----+-----+-----+------|      |-------------------------------|
-     * |  F1  | F2  | F3  | F4  |  F5 |      | LFT | DWN | UP  | RGT | VOLUP |
-     * |-----+-----+-----+-----+------+      |-------------------------------|
-     * |  F6  | F7  | F8  | F9  | F10 |      |MLFT | MDWN| MUP | MRGT| VOLDN |
-     * `------+-----+-----+------+----'      `-------------------------------'
-     *          .-----------------.           .-----------------.
-     *          | F11 | F12|      |           |     | PLY | SKP |
-     *          '-----------------'           '-----------------'
-     */
-    [NAV] = LAYOUT_gergoplex(
-            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, /*  */ KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU,
-            KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,   /*  */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_VOLU,
-            KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  /*  */ KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_VOLD,
-
-            KC_F11,  KC_F12,  XXXXXXX,
-            XXXXXXX, XXXXXXX, XXXXXXX
+            KC_BTN3, KC_BTN2, KC_BTN1,
+            _______, _______, _______
             ),
     // clang-format on
 };

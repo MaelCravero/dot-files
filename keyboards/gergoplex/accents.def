@@ -1,0 +1,8 @@
+// French diacritics combos
+
+COMB(eAcu,       FR_EACU,          FR_E, HR_K)
+COMB(eGrv,       FR_EGRV,          FR_E, HR_L)
+COMB(aGrv,       FR_AGRV,          FR_A, HR_L)
+COMB(uGrv,       FR_UGRV,          FR_U, HR_L)
+COMB(Circ,       FR_CIRC,          HR_J, HR_K)
+COMB(Diae,       FR_DIAE,          HR_J, HR_L)

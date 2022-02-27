@@ -7,6 +7,7 @@
 
 // User includes
 #include "gergoplex.def"
+#include "accents.def"
 
 // Word completion
 //#include "combos/eng-combos.def"
