@@ -162,8 +162,6 @@ alias gdb="gdb -q"
 
 alias pyvenv="python -m venv env"
 
-source ~/.dot-files/commandes_francophonie.sh
-
 export MAKEFLAGS=-j4
 export OPAMJOBS=4
 
@@ -202,4 +200,10 @@ test -r /home/mael/.opam/opam-init/init.zsh && . /home/mael/.opam/opam-init/init
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#eval $(thefuck --alias)
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.luarocks/bin
+
+export CFLAGS="-Wall -Wextra -pedantic -std=c99"
+export CXXFLAGS="-Wall -Wextra -pedantic -std=c++20"
+
+eval $(thefuck --alias)
