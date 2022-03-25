@@ -72,16 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /* Keymap 1: Numpad / Symbols layer
-     * ,----------------------------.       ,------------------------------.
-     * |  1  |  2  |  3  |  -  |  \  |      |  ~  |  ^  |  <  |  >  |  $   |
-     * |-----------------------------|      |--@-----_-----(-----)---------|
-     * |  4  |  5  |  6  |  *  |  +  |      |  `  |  '  |  {  |  }  |  "   |
-     * |-----------------------------|      |------------------------------|
-     * |  7  |  8  |  9  |  =  |  %  |      |  #  |  &  |  [  |  ]  |  |   |
-     * `-----------------------------'      `------------------------------'
-     *          .-----------------.           .------------------.
-     *          |    |  0  |      |           |     |     |      |
-     *          '-----------------'           '------------------'
+     *
      * ,----------------------------.       ,------------------------------.
      * |  1  |  2  |  3  |  4  |  5  |      |  6  |  7  |  8  |  9  |  0   |
      * |-----------------------------|      |--@-----(-----)-----_---------|
@@ -92,7 +83,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *          .-----------------.           .------------------.
      *          |    |     |      |           |     |     |      |
      *          '-----------------'           '------------------'
-     * |  à  |  è  |  ù  |  ^  |  ¨  |      |  ç  |     |     |     |      |
      */
     [SYMB] = LAYOUT_gergoplex(
             FR_1,    FR_2,    FR_3,    FR_4,    FR_5,    /*  */ FR_6,    FR_7,    FR_8,    FR_9,    FR_0,
@@ -129,9 +119,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------.       ,-------------------------------.
      * |  F1  | F2  | F3  | F4  |  F5 |      | MUTE| VDWN| VUP | BDWN| BUP   |
      * |-----+-----+-----+-----+------|      |-------------------------------|
-     * |  F6  | F7  | F8  | F9  | F10 |      | LFT | DWN | UP  | RGT | VOLUP |
+     * |  F6  | F7  | F8  | F9  | F10 |      | LFT | DWN | UP  | RGT | PG UP |
      * |-----+-----+-----+-----+------+      |-------------------------------|
-     * |  F11 | F12 |     |     |     |      |MLFT | MDWN| MUP | MRGT| VOLDN |
+     * |  F11 | F12 |     |     | PSCR|      |MLFT | MDWN| MUP | MRGT| PG DN |
      * `------+-----+-----+------+----'      `-------------------------------'
      *          .-----------------.           .-----------------.
      *          | M3  | M2 |  M1  |           |     |     |     |
@@ -139,8 +129,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [FNCT] = LAYOUT_gergoplex(
             KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,   /*  */ KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU,
-            KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  /*  */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_VOLU,
-            KC_F11,  KC_F12,  XXXXXXX, XXXXXXX,  XXXXXXX, /*  */ KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_VOLD,
+            KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  /*  */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PGUP,
+            KC_F11,  KC_F12,  XXXXXXX, XXXXXXX,  XXXXXXX, /*  */ KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_PGDN,
 
             KC_BTN3, KC_BTN2, KC_BTN1,
             _______, _______, _______
