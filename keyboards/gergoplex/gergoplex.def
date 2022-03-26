@@ -4,12 +4,17 @@ COMB(weTab,         KC_TAB,           KC_W, KC_E)
 COMB(sdEsc,         KC_ESC,           HR_S, HR_D)
 COMB(ioDel,         KC_DEL,           KC_I, KC_O)
 COMB(opIns,         KC_INS,           KC_O, KC_P)
-COMB(yuPscr,        KC_PSCR,          KC_Y, KC_U)
+// COMB(yuPscr,        KC_PSCR,          KC_Y, KC_U)
 
 COMB(yhAt,          FR_AT,            FR_Y, FR_H)
 COMB(ujLpar,        FR_LPRN,          FR_U, HR_J)
 COMB(ikLpar,        FR_RPRN,          FR_I, HR_K)
 COMB(olUnds,        FR_UNDS,          FR_O, HR_L)
+
+COMB(rfDquo,        FR_DQUO,          FR_R, HR_F)
+COMB(edQuot,        FR_QUOT,          FR_E, HR_D)
+
+COMB(commSclnExcl,  FR_EXLM,          FR_COMM, FR_SCLN)
 
 // Numpad
 COMB(plusminsDot,       FR_DOT,        FR_PLUS, FR_MINS)

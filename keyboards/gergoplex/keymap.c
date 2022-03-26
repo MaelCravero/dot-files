@@ -8,19 +8,27 @@
 
 #define HR_Q MT(MOD_LCTL, FR_Q)
 #define HR_S MT(MOD_LSFT, FR_S)
-#define HR_D LT(SYMB, FR_D)
-#define HR_F LT(DIAC, FR_F)
+// #define HR_S FR_S
+#define HR_D LT(NUMP, FR_D)
+// #define HR_F LT(DIAC, FR_F)
+// #define HR_D FR_D
+// #define HR_F MOD(MOD_LGUI, FR_F)
+#define HR_F FR_F
 
-#define HR_J LT(DIAC, FR_J)
-#define HR_K LT(SYMB, FR_K)
+#define HR_J FR_J
+// #define HR_J MOD(MOD_LGUI, FR_J)
+// #define HR_K FR_K
+// #define HR_J LT(DIAC, FR_J)
+#define HR_K LT(NUMP, FR_K)
 #define HR_L MT(MOD_RSFT, FR_L)
+// #define HR_L FR_L
 #define HR_M MT(MOD_RCTL, FR_M)
 
 #include "keymap_french.h"
 
 #define BASE 0 // default layer
 #define SYMB 1 // symbols
-#define DIAC 2 // diacritics
+#define NUMP 2 // numpad
 #define FNCT 3 // functions/motion (FUNC is already taken)
 
 #include QMK_KEYBOARD_H
@@ -29,6 +37,7 @@
 #define FR_CIR2 ALGR(FR_CCED)
 
 #define UC_NTLD UC(0x00F1)
+#define OS_SHFT OSM(MOD_RSFT)
 
 /* Combomap
  *
@@ -55,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |-----+-----+-----+-----+------|      |--------------------------------|
      * |     Q|  S  |  D  |  F  |  G  |      |  H  |  J  |  K  |  L  |      M |
      * |-----+-----+-----+-----+------+      |--------------------------------|
-     * |     W|  X  |  C  |  V  |  B  |      |  N  | , ? | ; . | : / |      ! |
+     * |     W|  X  |  C  |  V  |  B  |      |  N  | , ? | ; . | : / |  SHIFT |
      * `------+-----+-----+------+----'      `--------------------------------'
      *  .-------------------------.           .-----------------.
      *  |  META  | ' /ALT|   SPC  |           |ENT(NAV)|BSP|META|
@@ -65,10 +74,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_gergoplex(
             FR_A, FR_Z, FR_E, FR_R, FR_T, /*  */ FR_Y, FR_U,    FR_I,    FR_O,    FR_P,
             HR_Q, HR_S, HR_D, HR_F, FR_G, /*  */ FR_H, HR_J,    HR_K,    HR_L,    HR_M,
-            FR_W, FR_X, FR_C, FR_V, FR_B, /*  */ FR_N, FR_COMM, FR_SCLN, FR_COLN, FR_EXLM,
+            FR_W, FR_X, FR_C, FR_V, FR_B, /*  */ FR_N, FR_COMM, FR_SCLN, FR_COLN, OS_SHFT,
 
-            KC_LGUI,            MT(MOD_LALT, FR_QUOT), KC_SPC, // Left
-            LT(FNCT, KC_ENTER), KC_BSPC,               KC_RGUI // Right
+            KC_LGUI,            OSL(NUMP),         KC_SPC,  // Left
+            LT(FNCT, KC_ENTER), LT(NUMP, KC_BSPC), KC_LALT // Right
     ),
 
     /* Keymap 1: Numpad / Symbols layer
@@ -95,21 +104,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 
     /* Keymap 2: Diacritics/numpad layer
+     * ,----------------------------.       ,------------------------------.
+     * |  1  |  2  |  3  |  4  |  5  |      |  6  |  7  |  8  |  9  |  0   |
+     * |-----------------------------|      |--@-----(-----)-----_---------|
+     * |  =  |  <  |  >  |  -  |  +  |      |  #  |  {  |  }  |  "  |  $   |
+     * |-----------------------------|      |------------------------------|
+     * |  %  |  &  |  |  |  *  |  \  |      |  ~  |  [  |  ]  |  ^  |  `   |
+     * `-----------------------------'      `------------------------------'
+     *          .-----------------.           .------------------.
+     *          |    |     |      |           |     |     |      |
+     *          '-----------------'           '------------------'
+     *
      * ,-----------------------------.       ,------------------------------.
-     * |  à   |  é  |  è  |  ù  |  n  |      |  +  |  1  |  2  |  3  |  *   |
-     * |-----+-----+-----+-----+------|      |--.---------------------------|
-     * |      |     |     |  ^  |  ¨  |      |  -  |  4  |  5  |  6  |  /   |
+     * |   &  |  '  |  "  |  |  |  #  |      |  .  |  7  |  8  |  9  |  ^   |
+     * |-----+-----+-----+-----+------|      |------------------------------|
+     * |   =  |  <  |  >  |  -  |  +  |      |  ~  |  4  |  5  |  6  |  0   |
      * |-----+-----+-----+-----+------+      |------------------------------|
-     * |  ^   |  ¨  |  ç  |  ^  |  ¨  |      |  0  |  7  |  8  |  9  |  %   |
+     * |   %  |  [  |  ]  |  *  |  \  |      |  `  |  1  |  2  |  3  |  $   |
      * `------+-----+-----+------+----'      `------------------------------'
      *          .-----------------.           .-----------------.
      *          |     |    |      |           |     |     |     |
      *          '-----------------'           '-----------------'
      */
-    [DIAC] = LAYOUT_gergoplex(
-            FR_AGRV, FR_EACU, FR_EGRV, FR_UGRV, UC_NTLD, /*  */ FR_PLUS, FR_1, FR_2, FR_3, FR_ASTR,
-            XXXXXXX, XXXXXXX, XXXXXXX, FR_CIRC, FR_DIAE, /*  */ FR_MINS, FR_4, FR_5, FR_6, FR_SLSH,
-            FR_CIRC, FR_DIAE, FR_CCED, FR_CIRC, FR_DIAE, /*  */ FR_0,    FR_7, FR_8, FR_9, FR_PERC,
+    [NUMP] = LAYOUT_gergoplex(
+            FR_AMPR, FR_QUOT, FR_DQUO, FR_PIPE, FR_HASH, /*  */ FR_DOT,  FR_7, FR_8, FR_9, FR_CIR2,
+            FR_EQL,  FR_LABK, FR_RABK, FR_MINS, FR_PLUS, /*  */ FR_TILD, FR_4, FR_5, FR_6, FR_0,
+            FR_PERC, FR_LBRC, FR_RBRC, FR_ASTR, FR_BSLS, /*  */ FR_GRV,  FR_1, FR_2, FR_3, FR_DLR,
 
             _______, _______, _______, // Left
             _______, _______, _______  // Right
@@ -130,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [FNCT] = LAYOUT_gergoplex(
             KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,   /*  */ KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU,
             KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  /*  */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PGUP,
-            KC_F11,  KC_F12,  XXXXXXX, XXXXXXX,  XXXXXXX, /*  */ KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_PGDN,
+            KC_F11,  KC_F12,  XXXXXXX, XXXXXXX,  KC_PSCR, /*  */ KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_PGDN,
 
             KC_BTN3, KC_BTN2, KC_BTN1,
             _______, _______, _______
