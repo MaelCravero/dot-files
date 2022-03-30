@@ -7,12 +7,12 @@ COMB(opIns,         KC_INS,           KC_O, KC_P)
 // COMB(yuPscr,        KC_PSCR,          KC_Y, KC_U)
 
 COMB(yhAt,          FR_AT,            FR_Y, FR_H)
-COMB(ujLpar,        FR_LPRN,          FR_U, HR_J)
-COMB(ikLpar,        FR_RPRN,          FR_I, HR_K)
+COMB(ujLpar,        SH_LPRN,          FR_U, HR_J)
+COMB(ikLpar,        SH_RPRN,          FR_I, HR_K)
 COMB(olUnds,        FR_UNDS,          FR_O, HR_L)
 
-COMB(rfDquo,        FR_DQUO,          FR_R, HR_F)
-COMB(edQuot,        FR_QUOT,          FR_E, HR_D)
+COMB(edLcbr,        FR_LCBR,          FR_E, HR_D)
+COMB(rfRcbr,        FR_RCBR,          FR_R, HR_F)
 
 COMB(commSclnExcl,  FR_EXLM,          FR_COMM, FR_SCLN)
 

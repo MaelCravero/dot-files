@@ -4,7 +4,9 @@
 #----------------------------------------------------------------------------
 # Firmware options
 MOUSEKEY_ENABLE 					= yes
-UNICODE_ENABLE = yes
+UNICODE_ENABLE = no
+
+SRC += features/custom_shift_keys.c
 
 #Debug options
 VERBOSE 		 							= yes

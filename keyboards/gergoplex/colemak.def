@@ -1,0 +1,9 @@
+COMB(wfTab,         KC_TAB,           FR_W, FR_F)
+COMB(rsEsc,         KC_ESC,           HR_R, COHR_S)
+COMB(uyDel,         KC_DEL,           FR_U, FR_Y)
+COMB(yquotIns,      KC_INS,           FR_Y, SH_QUOT)
+
+COMB(jmAt,          FR_AT,            FR_J, FR_H)
+COMB(hnLpar,        SH_LPRN,          FR_H, HR_N)
+COMB(ueLpar,        SH_RPRN,          FR_U, HR_E)
+COMB(yiUnds,        FR_UNDS,          FR_Y, HR_I)
