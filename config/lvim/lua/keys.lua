@@ -2,9 +2,9 @@
 --                             Mappings                             --
 ----------------------------------------------------------------------
 lvim.keys.normal_mode["Y"] = "yy" -- default Y behavior
-lvim.keys.normal_mode["gt"] = ":BufferPick<CR>" -- default Y behavior
-lvim.keys.normal_mode["<Tab>"] = ":BufferNext<CR>"
-lvim.keys.normal_mode["<S-Tab>"] = ":BufferPrevious<CR>"
+lvim.keys.normal_mode["gt"] = ":BufferLinePick<CR>"
+lvim.keys.normal_mode["<Tab>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-Tab>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":SidewaysLeft<CR>"
 lvim.keys.normal_mode["<S-l>"] = ":SidewaysRight<CR>"
 
@@ -26,13 +26,11 @@ lvim.builtin.telescope.defaults.mappings = {
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-n>"] = actions.cycle_history_next,
         ["<C-p>"] = actions.cycle_history_prev
-        -- ["<C-t>"] = require"trouble.providers.telescope".open_with_trouble
     },
     -- for normal mode
     n = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous
-        -- ["<C-t>"] = require"trouble.providers.telescope".open_with_trouble
     }
 }
 
@@ -54,21 +52,33 @@ lvim.builtin.which_key.vmappings["c"] = {
 }
 
 wkmap["c"] = {
-    "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment"
+    "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>",
+    "Comment"
 }
+
 wkmap["C"] = {
     "<cmd>lua require('nvim-comment-frame').add_multiline_comment()<CR>",
     "Comment frame"
 }
+
+wkmap["f"] = {"<cmd>Telescope find_files<CR>", "Find files"}
+
 wkmap["s"] = {"<cmd>SymbolsOutline<cr>", "Symbols"}
-wkmap["t"] = {"<cmd>TroubleToggle<cr>", "Trouble"}
-wkmap["T"] = {
-    name = "+Trouble",
-    r = {"<cmd>Trouble lsp_references<cr>", "References"},
-    f = {"<cmd>Trouble lsp_definitions<cr>", "Definitions"},
-    d = {"<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnostics"},
-    q = {"<cmd>Trouble quickfix<cr>", "QuickFix"},
-    l = {"<cmd>Trouble loclist<cr>", "LocationList"},
-    t = {"<cmd>TroubleToggle<cr>", "Toggle"}
+
+wkmap["t"] = {
+    name = "+Telescoppe",
+    b = {"<cmd>Telescope buffers<cr>", "Buffers"},
+    f = {"<cmd>Telescope git_files<cr>", "Git files"},
+    g = {"<cmd>Telescope live_grep<cr>", "Grep"},
+    h = {"<cmd>Telescope help_tags<cr>", "Help"},
+    l = {"<cmd>Telescope loclist<cr>", "LocList"},
+    m = {"<cmd>Telescope man_pages<cr>", "Man"},
+    q = {"<cmd>Telescope quickfix<cr>", "QuickFix"},
+    r = {"<cmd>Telescope resume<cr>", "Resume"},
+    s = {"<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search"},
+    t = {"<cmd>Telescope<cr>", "Telescope"}
 }
-wkmap["q"] = {"<cmd>BufferClose!<CR>", "Close Buffer"}
+
+wkmap["q"] = {"<cmd>BufferKill<CR>", "Close Buffer"}
+wkmap[":"] = {"<cmd>Telescope commands<CR>", "Commands"}
+wkmap["="] = {"<cmd>Telescope spell_suggest<CR>", "Spelling"}

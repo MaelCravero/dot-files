@@ -20,13 +20,6 @@ lvim.builtin.treesitter.ensure_installed = {
 ----------------------------------------------------------------------
 --                            Formatters                            --
 ----------------------------------------------------------------------
--- lvim.lang.lua.formatters = {
---     {
---         exe = "lua-format",
---         args = {"--chop-down-table"}
---     }
--- }
-
 vim.cmd [[
 let g:neoformat_ocaml_ocamlformat = {
             \ 'exe': 'ocamlformat',
@@ -34,10 +27,34 @@ let g:neoformat_ocaml_ocamlformat = {
             \ 'stdin': 1,
             \ 'args': ['--enable-outside-detected-project', '--name', '"%:p"', '-']
             \ }
+
+let g:neoformat_ocaml_myocamlformat = {
+            \ 'exe': 'ocamlformat',
+            \ 'no_append': 1,
+            \ 'stdin': 1,
+            \ 'args': ['--indicate-multiline-delimiters=closing-on-separate-line', '--enable-outside-detected-project', '--name', '"%:p"', '-']
+            \ }
+
+"let g:neoformat_enabled_ocaml = ['ocamlformat', 'myocamlformat']
 ]]
 
 ----------------------------------------------------------------------
 --                               LSP                                --
 ----------------------------------------------------------------------
 
--- lvim.lang.ocaml.lsp.provider = "ocamlls"
+require'lspconfig'.ocamlls.setup {} -- Enable ocamlls over ocamllsp
+require'lspconfig'.als.setup {} -- Enable ada language server
+
+----------------------------------------------------------------------
+--                        Language-specific                         --
+----------------------------------------------------------------------
+
+-- Add merlin support
+vim.cmd [[
+if executable('opam')
+  let g:opamshare=substitute(system('opam config var share'),'\n$','','''')
+  if isdirectory(g:opamshare."/merlin/vim")
+    execute "set rtp+=" . g:opamshare."/merlin/vim"
+  endif
+endif
+]]
