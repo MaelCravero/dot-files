@@ -40,6 +40,7 @@
 #define SH_COLN LT(0, FR_COLN)
 #define SH_COMM LT(0, FR_COMM)
 #define SH_QUOT LT(0, FR_QUOT)
+#define SH_SHFT OSM(MOD_LSFT)
 
 typedef struct
 {
@@ -55,6 +56,7 @@ const custom_hold_key_t custom_hold_keys[] = {
     {SH_SCLN, FR_TILD},
     {SH_COLN, FR_BSLS},
     {SH_QUOT, FR_DLR },
+    {SH_SHFT, KC_CAPS},
     // clang-format on
 };
 
@@ -114,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             HR_Q, HR_S, HR_D, HR_F, FR_G, /*  */ FR_H, HR_J,    HR_K,    HR_L,    HR_M,
             FR_W, FR_X, FR_C, FR_V, FR_B, /*  */ FR_N, SH_COMM, SH_SCLN, SH_COLN, SH_QUOT,
 
-            KC_LGUI,            KC_CAPS, KC_SPC,  // Left
+            KC_LGUI,            SH_SHFT, KC_SPC,  // Left
             LT(FNCT, KC_ENTER), KC_BSPC, DF(NUMP) // Right
     ),
 
@@ -241,6 +243,11 @@ bool process_custom_hold_keys(uint16_t keycode, keyrecord_t* record)
             if (keycode == custom_hold_keys[i].keycode)
             {
                 tap_code16(custom_hold_keys[i].hold_keycode);
+
+                if (custom_hold_keys[i].hold_keycode == KC_CAPS) {
+                  caps = !caps;
+                }
+
                 return false;
             }
     }
