@@ -13,6 +13,8 @@ vim.cmd [[xmap ix <Plug>SidewaysArgumentTextobjA]]
 vim.cmd [[omap ia <Plug>SidewaysArgumentTextobjI]]
 vim.cmd [[xmap ia <Plug>SidewaysArgumentTextobjI]]
 
+vim.cmd [[let maplocalleader="\<BS>"]]
+
 ----------------------------------------------------------------------
 --                            Telescope                             --
 ----------------------------------------------------------------------
@@ -61,24 +63,45 @@ wkmap["C"] = {
     "Comment frame"
 }
 
-wkmap["f"] = {"<cmd>Telescope find_files<CR>", "Find files"}
+wkmap["n"] = {
+    "<cmd>lua require('notify').dismiss()<CR>",
+    "Dismiss notifications"
+}
 
-wkmap["s"] = {"<cmd>SymbolsOutline<cr>", "Symbols"}
+wkmap["f"] = { "<cmd>Telescope find_files<CR>", "Find files" }
+
+wkmap["s"] = { "<cmd>SymbolsOutline<cr>", "Symbols" }
 
 wkmap["t"] = {
     name = "+Telescoppe",
-    b = {"<cmd>Telescope buffers<cr>", "Buffers"},
-    f = {"<cmd>Telescope git_files<cr>", "Git files"},
-    g = {"<cmd>Telescope live_grep<cr>", "Grep"},
-    h = {"<cmd>Telescope help_tags<cr>", "Help"},
-    l = {"<cmd>Telescope loclist<cr>", "LocList"},
-    m = {"<cmd>Telescope man_pages<cr>", "Man"},
-    q = {"<cmd>Telescope quickfix<cr>", "QuickFix"},
-    r = {"<cmd>Telescope resume<cr>", "Resume"},
-    s = {"<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search"},
-    t = {"<cmd>Telescope<cr>", "Telescope"}
+    b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    f = { "<cmd>Telescope git_files<cr>", "Git files" },
+    g = { "<cmd>Telescope live_grep<cr>", "Grep" },
+    h = { "<cmd>Telescope help_tags<cr>", "Help" },
+    l = { "<cmd>Telescope loclist<cr>", "LocList" },
+    m = { "<cmd>Telescope man_pages<cr>", "Man" },
+    q = { "<cmd>Telescope quickfix<cr>", "QuickFix" },
+    r = { "<cmd>Telescope resume<cr>", "Resume" },
+    s = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search" },
+    t = { "<cmd>Telescope<cr>", "Telescope" }
 }
 
-wkmap["q"] = {"<cmd>BufferKill<CR>", "Close Buffer"}
-wkmap[":"] = {"<cmd>Telescope commands<CR>", "Commands"}
-wkmap["="] = {"<cmd>Telescope spell_suggest<CR>", "Spelling"}
+wkmap["m"] = {
+    name = "+Merlin",
+    k = { "<cmd>MerlinDocument<cr>", "Document" },
+    t = { "<cmd>MerlinTypeOf<cr>", "Type" },
+    n = { "<cmd>MerlinNextHole<cr>", "Next hole" },
+    p = { "<cmd>MerlinPreviousHole<cr>", "Previous hole" },
+    l = { "<cmd>MerlinLocate<cr>", "Locate" },
+    j = {
+        name = "+Jump",
+        f = { "<cmd>MerlinJump fun<cr>", "Function" },
+        l = { "<cmd>MerlinJump let<cr>", "Let" },
+        m = { "<cmd>MerlinJump module<cr>", "Module" },
+        s = { "<cmd>MerlinJump match<cr>", "Match" },
+    }
+}
+
+wkmap["q"] = { "<cmd>BufferKill<CR>", "Close Buffer" }
+wkmap[":"] = { "<cmd>Telescope commands<CR>", "Commands" }
+wkmap["="] = { "<cmd>Telescope spell_suggest<CR>", "Spelling" }

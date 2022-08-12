@@ -32,7 +32,7 @@ let g:neoformat_ocaml_myocamlformat = {
             \ 'exe': 'ocamlformat',
             \ 'no_append': 1,
             \ 'stdin': 1,
-            \ 'args': ['--indicate-multiline-delimiters=closing-on-separate-line', '--enable-outside-detected-project', '--name', '"%:p"', '-']
+            \ 'args': ['--indicate-multiline-delimiters=closing-on-separate-line', '--exp-grouping=preserve', '--if-then-else=k-r', '--break-cases=toplevel', '--enable-outside-detected-project', '--name', '"%:p"', '-']
             \ }
 
 "let g:neoformat_enabled_ocaml = ['ocamlformat', 'myocamlformat']
@@ -42,8 +42,7 @@ let g:neoformat_ocaml_myocamlformat = {
 --                               LSP                                --
 ----------------------------------------------------------------------
 
-require'lspconfig'.ocamlls.setup {} -- Enable ocamlls over ocamllsp
-require'lspconfig'.als.setup {} -- Enable ada language server
+require 'lspconfig'.als.setup {} -- Enable ada language server
 
 ----------------------------------------------------------------------
 --                        Language-specific                         --
