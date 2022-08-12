@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/mael/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -121,6 +121,43 @@ RPS1='${return_code} $(bureau_git_prompt)'
 
 SEP="%{${fg_bold[blue]}%}::%{$reset_color%}"
 
+fork () {
+    echo $PWD >> /tmp/sub$((FORK_LVL + 1))
+    FORK_LVL=$((FORK_LVL + 1)) zsh
+    [ ! -z "$1" ] && cd $1
+}
+
+fork_prompt() {
+    if [ -n "$FORK_LVL" ];
+    then
+        echo -n ""
+    fi
+
+    echo -n " "
+}
+
+fork_path () {
+    for i in $(seq $((FORK_LVL)) -1 1); do
+        echo -n "%{${fg[white]}%}::%{$reset_color%}"
+
+        if [ $i -eq $FORK_LVL ]; then
+            echo -n "%{${fg[blue]}%}"
+        else
+            echo -n "%{${fg[white]}%}"
+        fi
+
+        if [ -f "/tmp/sub$i" ]; then
+            echo -n "$(tail -n 1 "/tmp/sub$i")"
+        else
+            echo -n "[unknown]"
+        fi
+
+        echo -n "%{${reset_color}%}"
+    done
+}
+
+_1RIGHT="$(fork_path) $_1RIGHT"
+
 venv_prompt () {
     if [ -z $VIRTUAL_ENV ];
     then
@@ -153,7 +190,8 @@ sep () {
     echo -n ""
 }
 
-PROMPT='%{${fg_bold[yellow]}%}$(ranger_prompt)%{${reset_color}%}$(sep)%{${fg_bold[magenta]}%}$(venv_prompt)%{${reset_color}%} %{${fg_bold[blue]}%}»%{${reset_color}%} '
+
+PROMPT='%{${fg_bold[yellow]}%}$(ranger_prompt)%{${reset_color}%}$(sep)%{${fg_bold[magenta]}%}$(venv_prompt)%{${reset_color}%}%{${fg_bold[blue]}%}$(fork_prompt)»%{${reset_color}%} '
 #PS1="$VIRTUAL_ENV::$_USERNAME > "
 
 alias zource="source ~/.zshrc"
@@ -202,8 +240,49 @@ test -r /home/mael/.opam/opam-init/init.zsh && . /home/mael/.opam/opam-init/init
 
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.luarocks/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
-export CFLAGS="-Wall -Wextra -pedantic -std=c99"
-export CXXFLAGS="-Wall -Wextra -pedantic -std=c++20"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib
+export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.local/lib
 
-eval $(thefuck --alias)
+export TERM=xterm-256color
+
+
+eval $(opam env)
+
+view_dot() {
+    [ $# -ne 1 ] && echo "expecting one arg" && return
+    (
+        IMG=$(mktemp)
+        dot -Tsvg -o $IMG "$1"
+        eog $IMG
+    )
+}
+
+view_neato() {
+    [ $# -ne 1 ] && echo "expecting one arg" && return
+    (
+        IMG=$(mktemp)
+        neato -Tsvg -o $IMG "$1"
+        eog $IMG
+    )
+}
+
+view_png() {
+    [ $# -ne 1 ] && echo "expecting one arg" && return
+    (
+        IMG=$(mktemp)
+        dot -Tpng -o $IMG "$1"
+        eog $IMG
+    )
+}
+
+
+view_sfdp() {
+    [ $# -ne 1 ] && echo "expecting one arg" && return
+    (
+        IMG=$(mktemp)
+        sfdp -x -Goverlap=scale -Tsvg -o $IMG "$1"
+        eog $IMG
+    )
+}
