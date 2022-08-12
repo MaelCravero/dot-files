@@ -1,5 +1,8 @@
 #include "keymap_french.h"
 #define FR_CIR2 ALGR(FR_CCED)
+#define FR_OE ALGR(FR_O)
+#define FR_LGLL ALGR(FR_W)
+#define FR_RGLL ALGR(FR_X)
 
 #include "features/custom_shift_keys.h"
 
@@ -159,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NUMP] = LAYOUT_gergoplex(
             FR_AMPR, FR_DQUO, FR_TILD, FR_PIPE, FR_SLSH, /*  */ FR_DOT,  FR_7, FR_8, FR_9, FR_CIR2,
             FR_EQL,  FR_LABK, FR_RABK, FR_MINS, FR_PLUS, /*  */ FR_HASH, FR_4, FR_5, FR_6, FR_0,
-            FR_PERC, FR_LBRC, FR_RBRC, FR_ASTR, FR_BSLS, /*  */ FR_GRV,  FR_1, FR_2, FR_3, FR_DLR,
+            FR_PERC, FR_LGLL, FR_RGLL, FR_ASTR, FR_BSLS, /*  */ FR_GRV,  FR_1, FR_2, FR_3, FR_DLR,
 
             DF(BASE), _______, _______, // Left
             _______, _______, DF(BASE) // Right
@@ -244,8 +247,9 @@ bool process_custom_hold_keys(uint16_t keycode, keyrecord_t* record)
             {
                 tap_code16(custom_hold_keys[i].hold_keycode);
 
-                if (custom_hold_keys[i].hold_keycode == KC_CAPS) {
-                  caps = !caps;
+                if (custom_hold_keys[i].hold_keycode == KC_CAPS)
+                {
+                    caps = !caps;
                 }
 
                 return false;
