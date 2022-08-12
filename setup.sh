@@ -154,8 +154,7 @@ setup_vim() {
 setup_lvim() {
     print_category "LVIM"
 
-    sh -c "bash <(curl -s
-    https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)"
+    sh -c "bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)"
 }
 
 #--------------------------------------------------------------------#
