@@ -4,3 +4,4 @@ tags
 tint2/*.backup.*
 yarn.lock
 node_modules
+/helix

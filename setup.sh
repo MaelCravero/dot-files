@@ -158,6 +158,19 @@ setup_lvim() {
 }
 
 #--------------------------------------------------------------------#
+#                              Helix                                 #
+#--------------------------------------------------------------------#
+
+setup_helix() {
+    print_category "HELIX"
+
+    [ ! -d helix ] && git clone https://github.com/helix-editor/helix
+    cd helix
+    git pull
+    cargo install --path helix-term
+}
+
+#--------------------------------------------------------------------#
 #                             Oh my zsh                              #
 #--------------------------------------------------------------------#
 
@@ -221,6 +234,7 @@ setup_all() {
     link_config $CONFIG
     setup_vim
     setup_lvim
+    setup_helix
     setup_omz
 }
 
@@ -268,6 +282,9 @@ vim)
     ;;
 lvim)
     setup_lvim
+    ;;
+helix)
+    setup_helix
     ;;
 omz)
     setup_omz

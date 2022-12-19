@@ -1,0 +1,15 @@
+# use-grammars = { only = ["rust", "ocaml", "c", "cpp"] }
+
+[[language]]
+name = "ocaml"
+auto-format = true
+rulers = [100]
+indent = { tab-width = 2, unit = "  " }
+formatter = { command = "ocamlformat", args = ["--impl", "-"] }
+
+[[language]]
+name = "ocaml-interface"
+auto-format = true
+rulers = [100]
+indent = { tab-width = 2, unit = "  " }
+formatter = { command = "ocamlformat", args = ["--intf", "-"] }

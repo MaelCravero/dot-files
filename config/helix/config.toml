@@ -1,0 +1,45 @@
+theme = "gruvbox"
+
+[editor]
+true-color = true
+scrolloff = 5
+rulers = [80]
+auto-pairs = true
+auto-format = true
+cursorline = true
+color-modes = true
+bufferline = "always"
+idle-timeout = 0
+completion-trigger-len = 1
+
+[editor.cursor-shape]
+insert = "bar"
+select = "underline"
+
+[editor.whitespace.render]
+space = "none"
+tab = "all"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+
+[editor.indent-guides]
+render = true
+skip-levels = 1
+
+[keys.normal]
+# Useful shortcuts
+"C-h" = "jump_view_left"
+"C-k" = "jump_view_up"
+"C-j" = "jump_view_down"
+"C-l" = "jump_view_right"
+
+# More space commands
+"space" = { q = ":buffer-close", c = "toggle_comments", g = { k = "goto_prev_change", j = "goto_next_change" }, l = { k = "goto_prev_diag", j = "goto_next_diag" } }
+
+
+# Tab navigation
+"tab" = "goto_next_buffer"
+"S-tab" = "goto_previous_buffer"
