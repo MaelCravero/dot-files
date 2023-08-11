@@ -1,4 +1,8 @@
-# use-grammars = { only = ["rust", "ocaml", "c", "cpp"] }
+[[language]]
+name = "python"
+auto-format = true
+# formatter = { command = "autopep8", args = ["-a", "-"] }
+config = { pylsp = { plugins = { "black" = { "line_length" = 79 }} } }
 
 [[language]]
 name = "ocaml"
@@ -13,3 +17,34 @@ auto-format = true
 rulers = [100]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "ocamlformat", args = ["--intf", "-"] }
+
+[[language]]
+name = "ada"
+scope = "source.adb"
+injection-regex = "ada"
+file-types = ["adb", "ads"]
+shebangs = []
+roots = []
+comment-token = "-- "
+rulers = [80]
+indent = { tab-width = 3, unit = "   " }
+language-server = { command = "ada_language_server" }
+
+[[grammar]]
+name = "ada"
+source = { git = "https://github.com/briot/tree-sitter-ada", rev = "42cc2eb141529b03a91c18ec8646a0a58fb111ba"}
+
+[[language]]
+name = "tiger"
+scope = "source.tig"
+injection-regex = "tiger"
+file-types = ["tig", "tih"]
+shebangs = []
+roots = []
+comment-token = "/*"
+comment-end-token = "*/"
+indent = { tab-width = 2, unit = "  "}
+
+[[grammar]]
+name = "tiger"
+source = { git = "https://github.com/ambroisie/tree-sitter-tiger", rev = "a233ebe360a73a92c50978e5c4e9e471bc59ff42"}

@@ -4,7 +4,6 @@ theme = "gruvbox"
 true-color = true
 scrolloff = 5
 rulers = [80]
-auto-pairs = true
 auto-format = true
 cursorline = true
 color-modes = true
@@ -16,8 +15,24 @@ completion-trigger-len = 1
 insert = "bar"
 select = "underline"
 
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "file-modification-indicator"]
+# center = ["file-name"]
+right = [
+  "version-control",
+  "diagnostics",
+  "selections",
+  "position",
+  # "separator",
+  # "file-type",
+  # "separator",
+]
+
+[editor.lsp]
+display-inlay-hints = true
+
 [editor.whitespace.render]
-space = "none"
+# space = "all"
 tab = "all"
 
 [editor.whitespace.characters]
@@ -25,21 +40,49 @@ space = "·"
 nbsp = "⍽"
 tab = "→"
 
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+# '`' = ''
+
 [editor.indent-guides]
 render = true
 skip-levels = 1
 
+[editor.soft-wrap]
+enable = true
+
 [keys.normal]
+# Better (more vim-like?) defaults
+"esc" = ["normal_mode", "collapse_selection"]
+";" = ["collapse_selection", "repeat_last_motion"]
+"X" = ["extend_line_up", "extend_to_line_bounds"]
+# "(" = "["
+# ")" = "]"
+
 # Useful shortcuts
 "C-h" = "jump_view_left"
 "C-k" = "jump_view_up"
 "C-j" = "jump_view_down"
 "C-l" = "jump_view_right"
 
-# More space commands
-"space" = { q = ":buffer-close", c = "toggle_comments", g = { k = "goto_prev_change", j = "goto_next_change" }, l = { k = "goto_prev_diag", j = "goto_next_diag" } }
-
-
 # Tab navigation
 "tab" = "goto_next_buffer"
 "S-tab" = "goto_previous_buffer"
+
+# "H" = "goto_prev_parameter"
+# "L" = "goto_next_parameter"
+
+# More space commands
+[keys.normal.space]
+q = ":buffer-close"
+c = "toggle_comments"
+l = { k = "goto_prev_diag", j = "goto_next_diag" }
+C = { r = ":config-reload", o = ":config-open" }
+
+# Git hunks navigation
+[keys.normal.g]
+k = "goto_prev_change"
+j = "goto_next_change"
