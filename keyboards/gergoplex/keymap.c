@@ -93,6 +93,9 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS =
 #define COLE 1 // colemak-dh
 #define NUMP 2 // symbols/numpad
 #define FNCT 3 // functions/motion (FUNC is already taken)
+#define GAM1 4 // gaming layer 1
+#define GAM2 5 // gaming layer 2
+#define GAM3 6 // gaming layer 3
 
 #include QMK_KEYBOARD_H
 #include "g/keymap_combo.h"
@@ -119,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             HR_Q, HR_S, HR_D, HR_F, FR_G, /*  */ FR_H, HR_J,    HR_K,    HR_L,    HR_M,
             FR_W, FR_X, FR_C, FR_V, FR_B, /*  */ FR_N, SH_COMM, SH_SCLN, SH_COLN, SH_QUOT,
 
-            KC_LGUI,            SH_SHFT, KC_SPC,  // Left
+            KC_LGUI,            KC_CAPS, KC_SPC,  // Left
             LT(FNCT, KC_ENTER), KC_BSPC, DF(NUMP) // Right
     ),
 
@@ -181,13 +184,64 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *          '-----------------'           '-----------------'
      */
     [FNCT] = LAYOUT_gergoplex(
-            KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,   /*  */ KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU,
-            KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  /*  */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PGUP,
-            KC_F11,  KC_F12,  DF(COLE), XXXXXXX,  KC_PSCR, /*  */ KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_PGDN,
+            KC_F1,   KC_F2,   KC_F3,    KC_F4,     KC_F5,   /*  */ KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU,
+            KC_F6,   KC_F7,   KC_F8,    KC_F9,     KC_F10,  /*  */ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PGUP,
+            KC_F11,  KC_F12,  DF(COLE), DF(GAM1),  KC_PSCR, /*  */ KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_PGDN,
 
             KC_BTN3, KC_BTN2, KC_BTN1,
             _______, _______, _______
             ),
+
+    /* Keymap 1: Colemak-dh layer
+     *
+     * ,-----------------------------.       ,--------------------------------.
+     * |    A |  Z  |  E  |  R  |  T  |      |  Y  |  U  |  I  |  O  |    P   |
+     * |-----+-----+-----+-----+------|      |--------------------------------|
+     * |     Q|  S  |  D  |  F  |  G  |      |  H  |  J  |  K  |  L  |      M |
+     * |-----+-----+-----+-----+------+      |--------------------------------|
+     * |     W|  X  |  C  |  V  |  B  |      |  N  | , ? | ; . | : / |  ' !   |
+     * `------+-----+-----+------+----'      `--------------------------------'
+     *  .-------------------------.           .-----------------.
+     *  |  META  | CAPS  |   SPC  |           |ENT(NAV)|BSP|NUMP|
+     *  '-------------------------'           '-----------------'
+     */
+
+    [GAM1] = LAYOUT_gergoplex(
+            FR_A, FR_Z, FR_E, FR_R, FR_T, /*  */ FR_Y, FR_U,    FR_I,    FR_O,    FR_P,
+            FR_Q, FR_S, FR_D, FR_F, FR_G, /*  */ FR_H, FR_J,    FR_K,    FR_L,    FR_M,
+            FR_W, FR_X, FR_C, FR_V, FR_B, /*  */ FR_N, FR_COMM, FR_SCLN, FR_COLN, FR_EXLM,
+
+            LT(GAM3, KC_ESC),   LT(GAM2, KC_LALT), KC_SPC,  // Left
+            KC_ENTER,           KC_BSPC,           DF(BASE) // Right
+    ),
+
+    [GAM2] = LAYOUT_gergoplex(
+            KC_TAB,  FR_Z, FR_E, FR_R, FR_T, /*  */ _______, _______, _______, _______, _______,
+            KC_CAPS, FR_S, FR_D, FR_F, FR_G, /*  */ _______, _______, _______, _______, _______,
+            KC_LSFT, FR_X, FR_C, FR_V, FR_B, /*  */ _______, _______, _______, _______, _______,
+
+            XXXXXXX, DF(GAM1), XXXXXXX,  // Left
+            _______,  _______, _______ // Right
+    ),
+    [GAM2] = LAYOUT_gergoplex(
+            KC_TAB,  FR_Z, FR_E, FR_R, FR_T, /*  */ _______, _______, _______, _______, _______,
+            KC_CAPS, FR_S, FR_D, FR_F, FR_G, /*  */ _______, _______, _______, _______, _______,
+            KC_LSFT, FR_X, FR_C, FR_V, FR_B, /*  */ _______, _______, _______, _______, _______,
+
+            XXXXXXX, DF(GAM1), XXXXXXX,  // Left
+            _______,  _______, _______ // Right
+    ),
+
+    [GAM3] = LAYOUT_gergoplex(
+            KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    /*  */ _______, _______, _______, _______, _______,
+            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    /*  */ _______, _______, _______, _______, _______,
+            _______, _______, _______, _______, _______, /*  */ _______, _______, _______, _______, _______,
+
+            DF(GAM1), XXXXXXX, XXXXXXX,  // Left
+            _______,  _______, _______ // Right
+    ),
+
+
     // clang-format on
 };
 

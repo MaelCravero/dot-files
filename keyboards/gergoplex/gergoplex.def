@@ -13,10 +13,10 @@ COMB(ujLpar,        SH_LPRN,          FR_U, HR_J)
 COMB(ikLpar,        SH_RPRN,          FR_I, HR_K)
 COMB(olUnds,        FR_UNDS,          FR_O, HR_L)
 
-COMB(edLcbr,        FR_LCBR,          FR_E, HR_D)
-COMB(rfRcbr,        FR_RCBR,          FR_R, HR_F)
+COMB(zsLbrc,        FR_LBRC,          FR_Z, HR_S)
+COMB(edRbrc,        FR_RBRC,          FR_E, HR_D)
+COMB(rfMins,        FR_MINS,          FR_R, HR_F)
+COMB(tgSlsh,        FR_SLSH,          FR_T, FR_G)
 
-COMB(commSclnExcl,  FR_EXLM,          FR_COMM, FR_SCLN)
-
-// Numpad
-COMB(plusminsDot,       FR_DOT,        FR_PLUS, FR_MINS)
+COMB(zrDquo,        FR_DQUO,          FR_Z, FR_R)
+COMB(dfDot,         FR_DOT,           HR_D, HR_F)
